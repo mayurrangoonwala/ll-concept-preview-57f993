@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Less Lethal | Canada's Less-Lethal Store</title>
+<meta name="description" content="Less-lethal launchers, ammo and gear, priced in CAD with a showroom in Vaughan, Ontario. Byrna's full line, with more brands on the way.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0F1214">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F1214; --ink-2:#161A1D; --ink-3:#1E2327; --line:#2A3035;
+  --bone:#F3F1EC; --bone-2:#E8E5DE; --stone:#9AA3A9; --muted:#5E676D;
+  --signal:#C6F432; --signal-ink:#16190A; --signal-hi:#D4FF4F; --accent-text:var(--signal);
+  --fg2:var(--fg2); --photo:#F3F1EC; --hdr:rgba(15,18,20,.86); --glow:rgba(198,244,50,.13);
+  --map-bg:#13171A; --road:#262C31;
+  --alt-bg:var(--bone); --alt-fg:var(--ink); --alt-muted:var(--muted); --alt-eyebrow:#5B7A00;
+  --slot-line:#C3BFB5; --slot-n:#8A8579; --slot-h:#3C4044;
+  --r:14px; --max:1240px;
+  --display:"Barlow Condensed",system-ui,sans-serif;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--bone);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text)}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:.95}
+h2{font-size:clamp(36px,5vw,60px)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font:600 15px/1 var(--sans);transition:transform .15s ease,background .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-signal{background:var(--signal);color:var(--signal-ink)}
+.btn-signal:hover{background:var(--signal-hi)}
+.btn-ghost{border:1px solid var(--line);color:var(--bone)}
+.btn-ghost:hover{border-color:var(--stone)}
+section{padding:96px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.head p{color:var(--stone);max-width:460px}
+
+/* bar + header */
+.bar{background:var(--signal);color:var(--signal-ink);font:500 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar .wrap{display:flex;justify-content:center;gap:32px;height:38px;align-items:center;overflow:hidden;white-space:nowrap}
+header{position:sticky;top:0;z-index:20;background:var(--hdr);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;height:72px;gap:40px}
+.logo{display:flex;align-items:center;gap:12px}
+.mark{display:inline-grid;width:36px;height:36px;place-items:center;flex:none}
+.mark img,.mark .tint{width:36px;height:36px;object-fit:contain}
+/* his logo everywhere: original orange on the on-brand palettes, tinted to the accent on the new ones */
+.mark .tint{display:none;background:var(--signal);-webkit-mask:url(his-logo.png) center/contain no-repeat;mask:url(his-logo.png) center/contain no-repeat}
+html:not([data-theme^="onbrand"]) .mark img{display:none}
+html:not([data-theme^="onbrand"]) .mark .tint{display:block}
+.logo b{font:700 24px/1 var(--display);letter-spacing:.06em}
+.logo small{display:block;font:500 9.5px/1 var(--mono);letter-spacing:.3em;color:var(--stone);margin-top:4px}
+nav.main{display:flex;gap:28px;font-size:14.5px;font-weight:500;color:var(--fg2)}
+nav.main a:hover{color:var(--bone)}
+.tools{margin-left:auto;display:flex;gap:18px;align-items:center}
+.tools a{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line)}
+.tools svg{width:18px;height:18px;stroke:var(--bone);fill:none;stroke-width:1.8}
+.menu{display:none}
+
+/* hero */
+.hero{padding:72px 0 88px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:780px;height:780px;background:radial-gradient(closest-side,var(--glow),transparent);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(54px,8.4vw,112px);margin:22px 0 24px}
+.hero h1 em{font-style:normal;color:var(--accent-text)}
+.hero p.lede{font-size:19px;color:var(--fg2);max-width:520px}
+.hero .ctas{display:flex;gap:14px;margin:34px 0 40px;flex-wrap:wrap}
+.facts{display:grid;grid-template-columns:repeat(3,auto);gap:28px;justify-content:start}
+.facts div{border-left:2px solid var(--signal);padding-left:14px}
+.facts b{display:block;font:700 26px/1 var(--display)}
+.facts span{font-size:13px;color:var(--stone)}
+.stage{position:relative;aspect-ratio:1/1;border-radius:28px;background:var(--photo);overflow:hidden}
+.stage img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:6%}
+.stage .tag{position:absolute;left:20px;bottom:20px;right:20px;display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--bone);border-radius:14px;padding:16px 18px}
+.stage .tag small{display:block;font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--accent-text);margin-bottom:6px}
+.stage .tag b{font:700 22px/1 var(--display);text-transform:uppercase}
+.stage .tag strong{font:600 18px/1 var(--sans)}
+
+/* trust strip */
+.trust{border-block:1px solid var(--line);padding:0}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.trust div{display:flex;gap:14px;align-items:center;padding:26px 20px;border-left:1px solid var(--line)}
+.trust div:first-child{border-left:0;padding-left:0}
+.trust svg{width:26px;height:26px;flex:none;stroke:var(--signal);fill:none;stroke-width:1.7}
+.trust b{display:block;font-size:14.5px}
+.trust span{font-size:13px;color:var(--stone)}
+
+/* needs */
+.needs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.need{position:relative;min-height:300px;border-radius:var(--r);background:var(--ink-2);border:1px solid var(--line);padding:26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:border-color .2s ease,transform .2s ease}
+.need:hover{border-color:var(--accent-text);transform:translateY(-3px)}
+.need .n{font:500 12px/1 var(--mono);color:var(--muted)}
+.need h3{font-size:34px;margin:auto 0 10px}
+.need p{font-size:14.5px;color:var(--stone)}
+.need .go{margin-top:18px;font:600 14px/1 var(--sans);color:var(--accent-text)}
+
+/* brands */
+.brands{background:var(--alt-bg);color:var(--alt-fg)}
+.brands .head p{color:var(--alt-muted)}
+.brands .eyebrow{color:var(--alt-eyebrow)}
+.brandgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:16px}
+.flag{grid-row:span 2;background:var(--ink);color:var(--bone);border-radius:var(--r);padding:36px;display:flex;flex-direction:column;justify-content:space-between;min-height:440px;position:relative;overflow:hidden}
+.flag .pill{align-self:start;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--signal);color:var(--signal-ink);padding:8px 12px;border-radius:999px}
+.flag h3{font-size:64px;margin-top:18px}
+.flag p{color:var(--stone);max-width:360px;margin:12px 0 24px}
+.flag img{position:absolute;right:-24px;top:28px;width:56%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));transform:rotate(-8deg)}
+.flag p{max-width:320px}
+@media (max-width:640px){.flag img{width:52%;top:14px;right:-18px}.flag h3{margin-top:96px}}
+.flag .lines{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.flag .lines a{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.flag .lines a:hover{border-color:var(--accent-text)}
+.slot{border:1.5px dashed var(--slot-line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;justify-content:space-between;min-height:212px}
+.slot .n{font:500 12px/1 var(--mono);color:var(--slot-n)}
+.slot h3{font-size:28px;color:var(--slot-h)}
+.slot p{font-size:14px;color:var(--alt-muted)}
+
+/* products */
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{font:500 14px/1 var(--sans);height:40px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--fg2);cursor:pointer}
+.tabs button.on{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s ease}
+.card:hover{border-color:#3E464C}
+.card .ph{aspect-ratio:1/1;background:var(--photo);position:relative}
+.card .ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:10%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.card:hover .ph img{transform:scale(1.04)}
+.badge{position:absolute;top:12px;left:12px;font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--accent-text);padding:7px 9px;border-radius:6px}
+.card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .brand{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--stone);text-transform:uppercase}
+.card h3{font:600 17px/1.3 var(--sans);text-transform:none;letter-spacing:0}
+.card .spec{font-size:13px;color:var(--stone)}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px}
+.card .price{font:600 18px/1 var(--sans)}
+.card .price small{font:500 11px/1 var(--mono);color:var(--stone);margin-left:4px}
+.add{width:40px;height:40px;border-radius:50%;background:var(--bone);color:var(--ink);display:grid;place-items:center;font-size:22px;line-height:1}
+.add:hover{background:var(--signal)}
+.panel[hidden]{display:none}
+
+/* legal */
+.legal .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start}
+.legal h2{margin:18px 0 20px}
+.legal .intro{color:var(--fg2);font-size:17px}
+.legal .src{margin-top:22px;font-size:13px;color:var(--stone)}
+.legal .src a{text-decoration:underline;text-underline-offset:3px}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font:600 17px/1.35 var(--sans)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 26px/1 var(--sans);color:var(--accent-text);transition:transform .2s ease}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:var(--stone);max-width:620px}
+
+/* showroom */
+.show{padding:0 0 96px}
+.show .box{display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.show .info{padding:52px;background:var(--ink-2)}
+.show h2{margin:16px 0 18px}
+.show p{color:var(--fg2);max-width:440px}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:8px 28px;margin:28px 0 32px;font-size:14.5px}
+.hours dt{color:var(--stone)}
+.map{position:relative;min-height:420px;background:
+  linear-gradient(var(--ink-3) 1px,transparent 1px) 0 0/44px 44px,
+  linear-gradient(90deg,var(--ink-3) 1px,transparent 1px) 0 0/44px 44px,var(--map-bg)}
+.map .road{position:absolute;background:var(--road)}
+.pin{position:absolute;left:52%;top:46%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:10px}
+.pin span{background:var(--bone);color:var(--ink);font:600 13px/1 var(--sans);padding:10px 14px;border-radius:10px;white-space:nowrap}
+.pin i{width:18px;height:18px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 8px var(--glow),0 0 0 18px var(--glow)}
+
+/* reviews */
+.reviews{background:var(--ink-2);border-block:1px solid var(--line)}
+.score{display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+.score b{font:700 88px/1 var(--display);color:var(--accent-text)}
+.stars{color:var(--accent-text);letter-spacing:4px;font-size:20px}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.rev{background:var(--ink);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.rev p{margin:14px 0 18px;color:#D6D9DB}
+.rev small{color:var(--stone);font-size:13px}
+.ph-note{font:500 11px/1.4 var(--mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:18px}
+
+/* pro */
+.pro .box{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;background:var(--signal);color:var(--signal-ink);border-radius:24px;padding:56px}
+.pro .eyebrow{color:var(--signal-ink);opacity:.7}
+.pro h2{margin:14px 0 14px}
+.pro ul{list-style:none;display:grid;gap:12px;font-weight:500}
+.pro li{display:flex;gap:12px;align-items:center}
+.pro li::before{content:"";width:8px;height:8px;background:var(--signal-ink);border-radius:2px}
+.pro .btn{background:var(--signal-ink);color:var(--signal);margin-top:26px}
+
+/* footer */
+footer{padding:80px 0 40px;border-top:1px solid var(--line)}
+.fgrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
+.fgrid h4{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:18px}
+.fgrid ul{list-style:none;display:grid;gap:10px;font-size:14.5px;color:var(--fg2)}
+.signup{display:flex;margin-top:22px;max-width:380px;border:1px solid var(--line);border-radius:999px;padding:5px}
+.signup input{flex:1;background:none;border:0;color:var(--bone);padding:0 16px;font:400 15px var(--sans);outline:none;min-width:0}
+.signup button{height:44px;padding:0 20px;border-radius:999px;border:0;background:var(--signal);color:var(--signal-ink);font:600 14px var(--sans);cursor:pointer}
+.legalline{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:64px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+/* added from the old site */
+.why{padding:72px 0 0}
+.whygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.why .w{border-top:2px solid var(--signal);padding-top:22px}
+.why .w b{display:block;font:700 56px/1 var(--display);color:var(--accent-text);margin-bottom:14px}
+.why .w h3{font-size:26px;margin-bottom:8px}
+.why .w p{color:var(--stone);font-size:15px;max-width:340px}
+.fine{font-size:13.5px;color:var(--stone);margin-top:10px}
+.sw{display:flex;gap:6px;margin-top:4px}
+.sw i{width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 1px var(--line)}
+#launchers{grid-template-columns:repeat(5,1fr)}
+#essentials{grid-template-columns:repeat(5,1fr)}
+a.slot.live{border-style:solid;transition:border-color .2s ease}
+a.slot.live:hover{border-color:var(--alt-eyebrow)}
+.slot.live .n{color:var(--alt-eyebrow)}
+.cats{padding-top:0}
+.catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.catgrid a{position:relative;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:20px 56px 20px 20px;transition:border-color .2s ease}
+.catgrid a:hover{border-color:var(--signal)}
+.catgrid b{display:block;font-weight:600;font-size:16px;margin-bottom:6px}
+.catgrid span{font-size:13px;color:var(--stone);line-height:1.45;display:block}
+.catgrid i{position:absolute;right:18px;top:18px;font:500 13px/1 var(--mono);font-style:normal;color:var(--accent-text)}
+.compare{padding-top:0}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
+.tbl table{width:100%;border-collapse:collapse;min-width:760px;font-size:14.5px}
+.tbl th,.tbl td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl thead th{font:700 22px/1 var(--display);text-transform:uppercase;background:var(--ink-2)}
+.tbl tbody th{font:500 11.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--stone);white-space:nowrap}
+.tbl tbody td{color:var(--fg2)}
+.tbl tr.pr td{font-weight:600;color:var(--bone)}
+.tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0}
+.fgh{font-size:24px;margin:34px 0 4px}
+.pay{display:flex;flex-wrap:wrap;gap:8px;margin-top:48px}
+.pay span{font:500 11.5px/1 var(--mono);letter-spacing:.06em;border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--stone)}
+.legalline{margin-top:24px!important}
+@media (max-width:1080px){.whygrid{grid-template-columns:1fr}.catgrid{grid-template-columns:1fr 1fr}#launchers,#essentials{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:640px){.catgrid{grid-template-columns:1fr}#launchers,#essentials{grid-template-columns:1fr 1fr}.why .w b{font-size:44px}}
+
+/* palettes */
+[data-theme="arctic"]{--ink:#0C1117;--ink-2:#131A22;--ink-3:#1A232D;--line:#25303B;--stone:#98A6B3;--muted:#5D6B78;
+  --signal:#8FD3FF;--signal-ink:#04121C;--signal-hi:#ABDFFF;--glow:rgba(143,211,255,.14);--fg2:#C6D0D9;--hdr:rgba(12,17,23,.86);
+  --map-bg:#111820;--road:#22303D;--alt-eyebrow:#1D6A9C;--photo:#EEF1F4;--bone:#EEF1F4;}
+[data-theme="onbrand"]{--ink:#0B0B0C;--ink-2:#141415;--ink-3:#1C1C1E;--line:#2B2B2E;--stone:#A2A2A8;--muted:#66666C;
+  --signal:#FF5A00;--signal-ink:#000;--signal-hi:#FF7426;--glow:rgba(255,106,24,.16);--fg2:#D0D0D4;--hdr:rgba(11,11,12,.86);
+  --map-bg:#111112;--road:#262628;--alt-eyebrow:#C2410C;--bone:#F5F4F2;--photo:#F5F4F2;
+  --display:"Figtree",system-ui,sans-serif;--sans:"Figtree",system-ui,sans-serif;}
+[data-theme="onbrand-light"]{--ink:#FFFFFF;--ink-2:#F7F6F4;--ink-3:#EDEBE7;--line:#E4E2DD;--bone:#0B0B0C;--stone:#5E5E64;--muted:#8A8A90;
+  --signal:#FF5A00;--signal-ink:#000;--signal-hi:#FF7426;--accent-text:#C2410C;--glow:rgba(255,106,24,.10);--fg2:#2F2F34;
+  --photo:#F4F3F0;--hdr:rgba(255,255,255,.9);--map-bg:#F2F0EC;--road:#DFDCD5;
+  --alt-bg:#0B0B0C;--alt-fg:#FFFFFF;--alt-muted:#A2A2A8;--alt-eyebrow:#FF7A2E;--slot-line:#3A3A3E;--slot-n:#8A8A90;--slot-h:#E7E7E9;
+  --display:"Figtree",system-ui,sans-serif;--sans:"Figtree",system-ui,sans-serif;}
+[data-theme^="onbrand"] h1,[data-theme^="onbrand"] h2,[data-theme^="onbrand"] h3{font-weight:800;letter-spacing:-.015em;line-height:1}
+[data-theme^="onbrand"] .hero h1{font-size:clamp(46px,6.6vw,92px)}
+[data-theme^="onbrand"] .logo b{font-weight:800;font-size:21px;letter-spacing:.02em}
+[data-theme="onbrand-light"] .flag{border:1px solid var(--line)}
+[data-theme="onbrand-light"] .bar{background:var(--alt-bg);color:#fff}
+[data-theme="onbrand-light"] .stage .tag{background:var(--alt-bg);color:#fff}
+[data-theme="onbrand-light"] .stage .tag small,[data-theme="onbrand-light"] .badge{color:var(--signal)}
+[data-theme="onbrand-light"] .badge{background:var(--alt-bg)}
+
+/* palette switcher (concept only) */
+.palette{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:10px;padding:8px 10px 8px 14px;border-radius:999px;
+  background:rgba(20,22,24,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.35);color:#F3F1EC}
+.palette .lbl{font:500 10.5px/1.25 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.palette .lbl b{display:block;font-weight:500;color:#9AA3A9}
+.palette button{width:26px;height:26px;border-radius:50%;border:2px solid transparent;padding:0;cursor:pointer;background:none;display:grid;place-items:center}
+.palette button i{width:18px;height:18px;border-radius:50%;display:block}
+.palette button[aria-pressed="true"]{border-color:#F3F1EC}
+.palette button:focus-visible{outline:2px solid #F3F1EC;outline-offset:2px}
+
+/* age gate */
+.gate{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(0,0,0,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .2s ease}
+.gate.open{opacity:1;pointer-events:auto}
+.gate-card{width:100%;max-width:440px;background:var(--ink-2);color:var(--bone);border:1px solid var(--line);border-radius:24px;padding:36px 32px 28px;text-align:center;
+  transform:translateY(8px) scale(.98);transition:transform .25s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.gate.open .gate-card{transform:none}
+.gate .mark{width:56px;height:56px;margin:0 auto 18px}
+.gate .mark img,.gate .mark .tint{width:56px;height:56px}
+.gate h2{font-size:clamp(34px,6vw,44px);margin-bottom:12px}
+.gate p{color:var(--stone);font-size:15px;margin-bottom:24px}
+.gate-btns{display:grid;gap:10px}
+.gate-btns .btn{justify-content:center;width:100%}
+.gate small{display:block;margin-top:18px;font-size:12px;color:var(--muted);line-height:1.5}
+body.gated{overflow:hidden}
+
+@media (max-width:1080px){
+  nav.main{display:none}
+  .menu{display:grid}
+  .hero .wrap,.legal .wrap,.show .box,.pro .box{grid-template-columns:1fr}
+  .needs,.grid{grid-template-columns:repeat(2,1fr)}
+  .brandgrid{grid-template-columns:1fr 1fr}
+  .flag{grid-column:1/-1;grid-row:auto}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .trust div:nth-child(3){border-left:0;padding-left:0}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .rgrid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  section{padding:68px 0}
+  .bar .wrap{justify-content:flex-start;gap:24px}
+  .bar .wrap span:nth-child(n+2){display:none}
+  header .wrap{gap:12px}
+  .tools{gap:8px}
+  .tools .acct{display:none}
+  .hero{padding:44px 0 64px}
+  .facts{grid-template-columns:1fr 1fr;gap:18px}
+  .needs,.grid,.brandgrid{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card .body{padding:12px}
+  .card h3{font-size:15px}
+  .card .spec{display:none}
+  .trust .wrap{grid-template-columns:1fr}
+  .trust div{border-left:0;padding:16px 0;border-top:1px solid var(--line)}
+  .trust div:first-child{border-top:0}
+  .need{min-height:220px}
+  .flag{padding:26px;min-height:420px}
+  .flag h3{font-size:48px}
+  .show .info,.pro .box{padding:30px 22px}
+  .map{min-height:280px}
+  .fgrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap">
+  <span>Ships in 24–48 hours across Canada</span>
+  <span>Prices in Canadian dollars</span>
+  <span>Showroom open in Vaughan</span>
+</div></div>
+
+<header><div class="wrap">
+  <a class="logo" href="#" aria-label="Less Lethal home">
+    <span class="mark"><span class="tint" aria-hidden="true"></span><img src="his-logo.png" alt=""></span>
+    <span><b>LESS LETHAL</b><small>LIMITED</small></span>
+  </a>
+  <nav class="main" aria-label="Main">
+    <a href="#shop">Handheld launchers</a>
+    <a href="#shop">Long launchers</a>
+    <a href="#cats">Accessories</a>
+    <a href="#compare">Compare</a>
+    <a href="#brands">Brands</a>
+    <a href="#legal">Is it legal?</a>
+    <a href="#showroom">Visit us</a>
+  </nav>
+  <div class="tools">
+    <a href="#" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+    <a href="#" class="acct" aria-label="Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+    <a href="#" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></a>
+    <a href="#" class="menu" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></a>
+  </div>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow">Canada's less-lethal store</span>
+    <h1>Stop the threat.<br><em>Not a life.</em></h1>
+    <p class="lede">Launchers, ammo and personal-safety gear from the brands that set the standard. Priced in Canadian dollars, shipped from Ontario, and ready to try in our Vaughan showroom.</p>
+    <div class="ctas">
+      <a class="btn btn-signal" href="#shop">Shop launchers →</a>
+      <a class="btn btn-ghost" href="#showroom">Visit the showroom</a>
+    </div>
+    <div class="facts">
+      <div><b>No PAL</b><span>and no background check</span></div>
+      <div><b>CAD pricing</b><span>no exchange-rate surprises</span></div>
+      <div><b>Try first</b><span>hands-on in Vaughan</span></div>
+    </div>
+  </div>
+  <div class="stage">
+    <img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/CLXLBlackRightSideView_2000x.webp-2.jpg?v=1787705659&width=1000" alt="Byrna CL-XL launcher in black" fetchpriority="high">
+    <a class="tag" href="#shop">
+      <span><small>NEW · BYRNA</small><b>CL-XL Launcher</b></span>
+      <strong>$830.99</strong>
+    </a>
+  </div>
+</div></section>
+
+<section class="trust" aria-label="Why buy here"><div class="wrap">
+  <div><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span><b>Canadian-owned</b><span>Authorized Byrna dealer</span></span></div>
+  <div><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><span><b>Ships in 24–48 hours</b><span>From Ontario, across Canada</span></span></div>
+  <div><svg viewBox="0 0 24 24"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-6h6v6"/></svg><span><b>Real showroom</b><span>See it, hold it, ask us anything</span></span></div>
+  <div><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span><b>Arrived damaged?</b><span>Replaced free within 10 days</span></span></div>
+</div></section>
+
+<section class="why" aria-label="Why less-lethal"><div class="wrap">
+  <div class="whygrid">
+    <div class="w"><b>60 ft</b><h3>Distance is safety</h3><p>Stop a threat from up to 60 feet away, before anyone gets close enough to touch you or the people you love.</p></div>
+    <div class="w"><b>1 pull</b><h3>If you can point, you can use it</h3><p>If it's loaded, it's ready. No buttons to press, no steps to remember: the CO2 is pierced on your first trigger pull.</p></div>
+    <div class="w"><b>0 permits</b><h3>Made for Canada</h3><p>No PAL, no background check, delivered to your door. Must be 18 or older to buy.</p></div>
+  </div>
+</div></section>
+
+<section id="needs"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow">Shop by need</span><h2 style="margin-top:14px">What are you protecting?</h2></div>
+    <p>Start with the situation, not the spec sheet. Each path shows the right launchers, ammo and accessories together.</p>
+  </div>
+  <div class="needs">
+    <a class="need" href="#shop"><span class="n">01</span><h3>Home defence</h3><p>Bedside-ready launchers with the stopping power to end a break-in.</p><span class="go">Shop home →</span></a>
+    <a class="need" href="#shop"><span class="n">02</span><h3>Personal carry</h3><p>Compact launchers, holsters and alarms for everyday carry.</p><span class="go">Shop carry →</span></a>
+    <a class="need" href="#pro"><span class="n">03</span><h3>Security &amp; LE</h3><p>Duty-grade launchers, bulk ammo and team pricing.</p><span class="go">Shop pro →</span></a>
+    <a class="need" href="#shop"><span class="n">04</span><h3>Training</h3><p>Practice rounds, targets and CO2 to stay sharp.</p><span class="go">Shop training →</span></a>
+  </div>
+</div></section>
+
+<section class="brands" id="brands"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow">Brands</span><h2 style="margin-top:14px">The best names in less-lethal.</h2></div>
+    <p>The full Byrna line, plus Crimson Trace and Hogue, with more of the world's leading less-lethal brands on the way.</p>
+  </div>
+  <div class="brandgrid">
+    <div class="flag">
+      <span class="pill">Flagship brand</span>
+      <div style="position:relative">
+        <h3>Byrna</h3>
+        <p>Every Byrna launcher, ammo and accessory in Canada, backed by our showroom and Canadian support.</p>
+        <div class="lines">
+          <a href="#shop">CL-XL</a><a href="#shop">LE</a><a href="#shop">SD</a><a href="#shop">TCR</a><a href="#shop">Mission 4</a><a href="#shop">Ammo</a>
+        </div>
+      </div>
+      <img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_left_front_transparent_2000x_2f6252e2-2260-4a37-9854-06207d69ee82.png?v=1787704684&width=900" alt="" aria-hidden="true">
+    </div>
+    <a class="slot live" href="#cats"><span class="n">In store now</span><div><h3>Crimson Trace</h3><p>Rail Master laser sights, red and green.</p></div></a>
+    <a class="slot live" href="#cats"><span class="n">In store now</span><div><h3>Hogue</h3><p>HandALL grip sleeves for the Byrna CL.</p></div></a>
+    <div class="slot"><span class="n">Coming soon</span><div><h3>Next brand</h3><p>Join the list to hear first.</p></div></div>
+    <div class="slot"><span class="n">Coming soon</span><div><h3>Next brand</h3><p>More less-lethal brands on the way.</p></div></div>
+  </div>
+</div></section>
+
+<section id="shop"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow">Shop</span><h2 style="margin-top:14px">Best sellers</h2><p class="fine">All sales are final. Damaged on arrival? We replace it free.</p></div>
+    <div class="tabs" role="tablist">
+      <button class="on" role="tab" aria-selected="true" data-tab="launchers">Launchers</button>
+      <button role="tab" aria-selected="false" data-tab="essentials">Ammo &amp; essentials</button>
+    </div>
+  </div>
+
+  <div class="panel grid" id="launchers">
+    <a class="card" href="#"><div class="ph"><span class="badge">New</span><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/CLXLBlackRightSideView_2000x.webp-2.jpg?v=1787705659&width=600" alt="Byrna CL-XL launcher"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>CL-XL Launcher</h3><span class="spec">Handheld · .61 cal · 410 fps</span><span class="sw"><i style="background:#FF6A1A"></i><i style="background:#1A1A1A"></i></span><div class="row"><span class="price">$830.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Black-Byrna-LE-Plus_Full-Kit-Image_2000x_2a65ff6b-fc61-4286-a93e-d90eb4603f0d.jpg?v=1787704684&width=600" alt="Byrna LE launcher kit"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>LE Gen 2</h3><span class="spec">Handheld · .68 cal · 12g CO2</span><span class="sw"><i style="background:#1A1A1A"></i><i style="background:#FF6A1A"></i></span><div class="row"><span class="price">$739.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+    <a class="card" href="#"><div class="ph"><span class="badge">Best value</span><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_SD_Orange_Can_800x_036ba176-7464-4ac1-b816-822c5677ebb6.webp?v=1707674657&width=600" alt="Byrna SD launcher kit"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>SD Kit</h3><span class="spec">Handheld · .68 cal · 8g CO2</span><span class="sw"><i style="background:#FF6A1A"></i><i style="background:#B8A27A"></i><i style="background:#1A1A1A"></i></span><div class="row"><span class="price">$629.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Mission_4_Kit_v2_2000x_b8e1616d-7574-4a67-b78f-6d0168490376.webp?v=1753301818&width=600" alt="Byrna Mission 4 bundle"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>Mission 4 Bundle</h3><span class="spec">Long · 88g CO2 · 175 ft</span><div class="row"><span class="price">$999.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/TCR_Square_800x_7d200533-31ff-402d-9882-ab59fe894f20.png?v=1709925151&width=600" alt="Byrna TCR basic kit"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>TCR Basic Kit</h3><span class="spec">Long · 7 + 12-rd mags</span><div class="row"><span class="price">$899.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+  </div>
+
+  <div class="panel grid" id="essentials" hidden>
+    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_render_Kinetic_95ct_800x_3c7b10d8-b452-48e3-ac8f-776d931bf5e5.webp?v=1707680879&width=600" alt="Byrna kinetic projectiles"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>Kinetic Projectiles</h3><span class="spec">.68 cal · 95 count</span><div class="row"><span class="price">$99.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/12gram_800x_04417652-705e-4dbd-b015-485871e157f5.webp?v=1707681735&width=600" alt="Byrna 12 gram CO2 cartridges"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>12g CO2 Cartridges</h3><span class="spec">For LE and CL-XL</span><div class="row"><span class="price">$29.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/IMG-0009.webp?v=1715894379&width=600" alt="Byrna 7-round magazine"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>7-Round Magazine</h3><span class="spec">.68 cal · SD and LE</span><div class="row"><span class="price">$39.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/IMG-0001.webp?v=1715803877&width=600" alt="Byrna Level II holster"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>Level II Holster</h3><span class="spec">Retention · right or left hand</span><div class="row"><span class="price">$69.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna-Banshee-Black_800x_1b056940-e9cc-4ad4-b20f-4a1c507fa33c.webp?v=1707682232&width=600" alt="Byrna Banshee personal safety alarm"></div>
+      <div class="body"><span class="brand">Byrna</span><h3>Banshee Alarm</h3><span class="spec">Black or pink</span><div class="row"><span class="price">$39.99<small>CAD</small></span><span class="add">+</span></div></div></a>
+  </div>
+</div></section>
+
+<section class="cats" id="cats"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Everything we carry</span><h2 style="margin-top:14px">Shop by category</h2></div><p>35 products and counting. Spares, upgrades and refills for every launcher we sell.</p></div>
+  <div class="catgrid">
+    <a href="#shop"><b>Handheld launchers</b><span>CL-XL · LE · SD</span><i>3</i></a>
+    <a href="#shop"><b>Long launchers</b><span>TCR · Mission 4</span><i>2</i></a>
+    <a href="#"><b>Ammo &amp; CO2</b><span>Kinetic, Eco-Kinetic, .61 cal · 8g, 12g, 88g CO2 · Boost</span><i>9</i></a>
+    <a href="#"><b>Magazines</b><span>5- and 7-round · CL .61 · mag defenders</span><i>7</i></a>
+    <a href="#"><b>Holsters &amp; slings</b><span>Level II · waistband · rifle sling</span><i>5</i></a>
+    <a href="#"><b>Sights &amp; grips</b><span>Crimson Trace lasers · Hogue grips</span><i>4</i></a>
+    <a href="#"><b>Training &amp; care</b><span>Target tent · target trap · oiler kit</span><i>3</i></a>
+    <a href="#"><b>Personal alarms</b><span>Byrna Banshee</span><i>1</i></a>
+  </div>
+</div></section>
+
+<section class="compare" id="compare"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Compare</span><h2 style="margin-top:14px">Which launcher is right for you?</h2></div><p>Every Byrna launcher we sell, side by side. Figures from the manufacturer.</p></div>
+  <div class="tbl" role="region" aria-label="Launcher comparison" tabindex="0">
+  <table>
+    <thead><tr><th></th><th>SD</th><th>LE Gen 2</th><th>CL-XL</th><th>TCR</th><th>Mission 4</th></tr></thead>
+    <tbody>
+      <tr><th>Best for</th><td>First launcher, everyday carry</td><td>More power in a pistol</td><td>Byrna's most advanced pistol</td><td>Home defence, rails for upgrades</td><td>Property defence, high capacity</td></tr>
+      <tr><th>Type</th><td>Handheld</td><td>Handheld</td><td>Handheld</td><td>Long</td><td>Long</td></tr>
+      <tr><th>Calibre</th><td>.68</td><td>.68</td><td>.61</td><td>.68</td><td>.68</td></tr>
+      <tr><th>CO2</th><td>8g</td><td>12g</td><td>12g</td><td>12g</td><td>88g</td></tr>
+      <tr><th>Speed</th><td>up to 300 fps</td><td>330 fps</td><td>410 fps</td><td>—</td><td>325 fps avg</td></tr>
+      <tr><th>Range</th><td>—</td><td>60 ft</td><td>60 ft</td><td>—</td><td>175 ft</td></tr>
+      <tr><th>Magazines</th><td>2 × 5-rd</td><td>2 × 5-rd</td><td>7-rd + 5-rd</td><td>7-rd + 12-rd</td><td>—</td></tr>
+      <tr><th>Colours</th><td>Orange, tan, black</td><td>Black, orange</td><td>Orange, black</td><td>—</td><td>—</td></tr>
+      <tr class="pr"><th>Price</th><td>$629.99</td><td>$739.99</td><td>$830.99</td><td>$899.99</td><td>$999.99</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<section class="legal" id="legal"><div class="wrap">
+  <div>
+    <span class="eyebrow">Is it legal?</span>
+    <h2>Straight answers, before you buy.</h2>
+    <p class="intro">The question everyone asks first. Here's what Canadian law says about the launchers we sell, in plain language.</p>
+    <p class="src">Based on Criminal Code s.84(3)(d). <a href="#">Read the full explanation →</a></p>
+  </div>
+  <div>
+    <details open><summary>Do I need a firearms licence (PAL) to own a Byrna?</summary><p>No. Under Criminal Code s.84(3)(d), a barrelled weapon that can't fire a projectile faster than 152.4 m/s or with more than 5.7 joules of energy isn't a "firearm" under the Firearms Act. Byrna launchers sit under that line, so no PAL, permit or background check is needed.</p></details>
+    <details><summary>Can I buy one in every province?</summary><p>Byrna launchers are legal to own in every province. Some items can't ship to certain places, and federal, provincial and municipal rules on carrying and use still apply. We'll walk you through them.</p></details>
+    <details><summary>Can I carry it in public?</summary><p>Carrying any weapon for self-defence has limits under Canadian law. Our team will explain what applies where you live.</p></details>
+    <details><summary>How old do I have to be?</summary><p>You must be 18 or older to buy from Less Lethal.</p></details>
+    <h3 class="fgh">Orders &amp; policies</h3>
+    <details><summary>How fast do you ship?</summary><p>Orders usually ship within 24–48 hours during business hours, by tracked third-party carrier.</p></details>
+    <details><summary>Can I return or exchange it?</summary><p>Because of what we sell, all sales are final: no returns, refunds or exchanges.</p></details>
+    <details><summary>What if it arrives damaged or defective?</summary><p>Request a free replacement (RMA) within 10 days of delivery. After that, Byrna's manufacturer warranty covers it.</p></details>
+    <details><summary>Can I cancel my order?</summary><p>Yes, for a full refund, until it ships. Email info@lesslethal.ca or call (905) 251-1493. Once it has shipped it can't be changed.</p></details>
+  </div>
+</div></section>
+
+<section class="show" id="showroom"><div class="wrap"><div class="box">
+  <div class="info">
+    <span class="eyebrow">Vaughan showroom</span>
+    <h2>Hold it before you buy it.</h2>
+    <p>Come in, handle every launcher, compare the line-up and leave with everything set up. Order online and pick up the same day.</p>
+    <dl class="hours">
+      <dt>Address</dt><dd>13 – 499 Edgeley Blvd., Vaughan, ON L4K 4H3</dd>
+      <dt>Mon – Fri</dt><dd>10:00 AM – 6:00 PM</dd>
+      <dt>Saturday</dt><dd>12:00 PM – 4:00 PM</dd>
+      <dt>Phone</dt><dd><a href="tel:+19052511493">(905) 251-1493</a></dd>
+      <dt>Email</dt><dd><a href="mailto:info@lesslethal.ca">info@lesslethal.ca</a></dd>
+    </dl>
+    <a class="btn btn-signal" href="#">Get directions →</a>
+    <p class="fine" style="margin-top:18px">Question about an order? Include your order number and the email you used at checkout so we can help faster.</p>
+  </div>
+  <div class="map" role="img" aria-label="Map showing the Vaughan showroom">
+    <span class="road" style="left:0;right:0;top:46%;height:14px"></span>
+    <span class="road" style="top:0;bottom:0;left:52%;width:12px"></span>
+    <span class="road" style="left:0;right:0;top:78%;height:8px"></span>
+    <span class="road" style="top:0;bottom:0;left:22%;width:8px"></span>
+    <span class="pin"><span>Less Lethal · Edgeley Blvd</span><i></i></span>
+  </div>
+</div></div></section>
+
+<section class="reviews"><div class="wrap">
+  <div class="score">
+    <b>★</b>
+    <div><h2 style="font-size:40px">What customers say</h2><p style="color:var(--stone);margin-top:6px">Verified reviews from online and showroom buyers</p></div>
+  </div>
+  <div class="rgrid">
+    <div class="rev"><div class="stars">★★★★★</div><p>Customer reviews appear here once the reviews app is connected and buyers start leaving them after delivery.</p><small>Verified buyer · Ontario</small></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>Each review shows the product, the buyer's province and a verified-purchase badge.</p><small>Verified buyer · Alberta</small></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>Showroom visits can leave a review too, so walk-in customers count as proof.</p><small>Showroom visit · Vaughan</small></div>
+  </div>
+  <p class="ph-note">Concept placeholder: no real reviews shown. Rating and quotes come from the live reviews app.</p>
+</div></section>
+
+<section class="pro" id="pro"><div class="wrap"><div class="box">
+  <div>
+    <span class="eyebrow">Security, LE &amp; business</span>
+    <h2>Equipping a team?</h2>
+    <p style="max-width:440px">Volume pricing, duty-grade kit and training ammo for security companies, police services and retailers.</p>
+    <a class="btn" href="#">Request a quote →</a>
+  </div>
+  <ul>
+    <li>Volume and contract pricing</li>
+    <li>Fast quotes from a real person</li>
+    <li>Training and demo days in Vaughan</li>
+    <li>Dealer enquiries welcome</li>
+  </ul>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <a class="logo" href="#"><span class="mark"><span class="tint" aria-hidden="true"></span><img src="his-logo.png" alt=""></span><span><b>LESS LETHAL</b><small>LIMITED</small></span></a>
+      <p style="color:var(--stone);margin-top:18px;max-width:340px;font-size:14.5px">Exclusive offers, new brands and restocks. No spam.</p>
+      <form class="signup" onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Email"><button>Join</button></form>
+    </div>
+    <div><h4>Shop</h4><ul><li>Handheld launchers</li><li>Long launchers</li><li>Accessories</li><li>Brands</li></ul></div>
+    <div><h4>Help</h4><ul><li>CA Firearms Act</li><li>FAQ</li><li>Shipping</li><li>Damaged items &amp; warranty</li><li>Contact us</li></ul></div>
+    <div><h4>Company</h4><ul><li>About Less Lethal</li><li>Showroom</li><li>Security &amp; LE</li><li>Instagram @lesslethalcanada</li><li>info@lesslethal.ca</li></ul></div>
+  </div>
+  <div class="pay" aria-label="Payment methods"><span>Amex</span><span>Apple Pay</span><span>Google Pay</span><span>Mastercard</span><span>Visa</span></div>
+  <div class="legalline"><span>© 2026 Less Lethal Limited · Vaughan, Ontario · All sales final</span><span>Privacy · Final sale policy · Cancellation policy · Terms · Shipping</span><span>Byrna, Crimson Trace and Hogue are trademarks of their owners.</span></div>
+</div></footer>
+
+<div class="palette" role="group" aria-label="Concept palette">
+  <span class="lbl"><b>Concept · palette</b><span id="pname">Signal</span></span>
+  <button data-t="signal" title="Signal: new identity, graphite + lime" aria-pressed="true"><i style="background:linear-gradient(135deg,#0F1214 50%,#C6F432 50%)"></i></button>
+  <button data-t="arctic" title="Arctic: new identity, graphite + ice blue" aria-pressed="false"><i style="background:linear-gradient(135deg,#0C1117 50%,#8FD3FF 50%)"></i></button>
+  <button data-t="onbrand" title="On brand (dark): his logo, black + orange" aria-pressed="false"><i style="background:linear-gradient(135deg,#0B0B0C 50%,#FF5A00 50%)"></i></button>
+  <button data-t="onbrand-light" title="On brand (light): his logo, white + orange" aria-pressed="false"><i style="background:linear-gradient(135deg,#FFFFFF 50%,#FF5A00 50%);box-shadow:inset 0 0 0 1px #ccc"></i></button>
+</div>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t" aria-describedby="gate-d" hidden>
+  <div class="gate-card">
+    <span class="mark"><span class="tint" aria-hidden="true"></span><img src="his-logo.png" alt=""></span>
+    <h2 id="gate-t">Are you 18 or older?</h2>
+    <p id="gate-d">Less Lethal sells less-lethal launchers and self-defence products. You must be of legal age to enter.</p>
+    <div class="gate-btns">
+      <button class="btn btn-signal" id="gate-yes" type="button">Yes, I'm 18 or older</button>
+      <a class="btn btn-ghost" href="https://www.google.ca/">No, take me back</a>
+    </div>
+    <small>By entering lesslethal.ca you confirm you are of legal age where you live.</small>
+  </div>
+</div>
+
+<script>
+(function(){
+  var q=new URLSearchParams(location.search), root=document.documentElement;
+  var names={signal:'Signal',arctic:'Arctic','onbrand':'On brand · dark','onbrand-light':'On brand · light'};
+    function store(k,v){try{v===undefined?0:localStorage.setItem(k,v);return localStorage.getItem(k)}catch(e){return null}}
+  function setTheme(t){
+    if(!names[t])t='signal';
+    t==='signal'?root.removeAttribute('data-theme'):root.setAttribute('data-theme',t);
+    document.getElementById('pname').textContent=names[t];
+    document.querySelectorAll('.palette button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.t===t)});
+    store('ll-theme',t);
+  }
+  setTheme(q.get('theme')||store('ll-theme')||'signal');
+  document.querySelectorAll('.palette button').forEach(function(b){b.addEventListener('click',function(){setTheme(b.dataset.t)})});
+
+  var gate=document.getElementById('gate'), ok=null;
+  try{ok=sessionStorage.getItem('ll-18')}catch(e){}
+  var show=q.get('gate')==='1'||(q.get('gate')!=='0'&&ok!=='yes');
+  if(show){gate.hidden=false;document.body.classList.add('gated');requestAnimationFrame(function(){gate.classList.add('open');document.getElementById('gate-yes').focus()})}
+  document.getElementById('gate-yes').addEventListener('click',function(){
+    try{sessionStorage.setItem('ll-18','yes')}catch(e){}
+    gate.classList.remove('open');document.body.classList.remove('gated');setTimeout(function(){gate.hidden=true},220);
+  });
+})();
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});
+  document.querySelectorAll('.panel').forEach(p=>p.hidden=p.id!==b.dataset.tab);
+}));
+</script>
+</body>
+</html>

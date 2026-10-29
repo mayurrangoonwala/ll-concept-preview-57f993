@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Less Lethal · Shopify theme mockup</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* Mockup of route B: a premium Shopify theme (section-based, Impact/Prestige style),
+   set up in his current orange + black. Every block below is a standard theme
+   section or an app block, so it is buildable without custom code. */
+:root{
+  --bg:#FFFFFF; --bg-2:#F5F4F2; --ink:#0B0B0C; --ink-2:#2F2F34; --muted:#6B6B72; --line:#E4E2DD;
+  --orange:#FF5A00; --orange-hi:#FF7426; --orange-text:#C2410C;
+  --r:10px; --max:1320px;
+  --sans:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:900;letter-spacing:-.02em;line-height:1.02;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 26px;border-radius:999px;font-weight:700;font-size:15px;transition:background .2s,transform .2s}
+.btn-o{background:var(--orange);color:#000}.btn-o:hover{background:var(--orange-hi)}
+.btn-w{background:#fff;color:#000}.btn-line{border:1.5px solid currentColor}
+.sec{padding:72px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}
+.head h2{font-size:clamp(30px,4vw,46px)}
+.head a{font-weight:700;font-size:14px;border-bottom:2px solid var(--orange);padding-bottom:2px;white-space:nowrap}
+
+/* --- mockup frame: the note and the "what's an app" switch --- */
+.mock{position:fixed;left:16px;bottom:16px;z-index:90;display:flex;align-items:center;gap:12px;background:rgba(11,11,12,.92);color:#fff;
+  border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px);padding:10px 12px 10px 16px;border-radius:999px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:calc(100vw - 32px)}
+.mock b{color:var(--orange)}
+.mock button{background:#fff;color:#000;border-radius:999px;padding:7px 14px;font-weight:700;font-size:12px;white-space:nowrap}
+.mock button[aria-pressed="true"]{background:var(--orange)}
+.tag{display:none;position:absolute;z-index:5;top:10px;right:10px;font:700 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:999px;pointer-events:none}
+.tag.theme{background:#0B0B0C;color:#fff}.tag.app{background:#FFD400;color:#000}
+body.show-tags .tag{display:block}
+body.show-tags [data-t]{outline:2px dashed rgba(255,90,0,.55);outline-offset:-2px}
+body.show-tags [data-t="app"]{outline-color:#E0B800}
+[data-t]{position:relative}
+
+/* --- announcement + header --- */
+.ann{background:var(--ink);color:#fff;font-size:13px;font-weight:600;text-align:center;padding:9px 16px}
+.ann span{color:var(--orange)}
+header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.hdr{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px}
+.nav{display:flex;gap:26px;font-weight:600;font-size:15px}
+.nav a{position:relative;padding:28px 0}
+.nav a:hover{color:var(--orange-text)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{height:44px;width:auto}
+.logo b{display:block;font-weight:900;font-size:19px;letter-spacing:.02em;line-height:1}
+.logo small{display:block;font-size:10px;letter-spacing:.32em;color:var(--orange-text);font-weight:700;margin-top:3px}
+.icons{display:flex;justify-content:flex-end;gap:18px;align-items:center}
+.icons svg{width:22px;height:22px}
+.cart{position:relative}.cart i{position:absolute;top:-6px;right:-8px;background:var(--orange);color:#000;font:700 10px/16px var(--sans);font-style:normal;width:16px;height:16px;border-radius:50%;text-align:center}
+.burger{display:none}
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.08);display:none}
+.has-mega:hover + .mega,.mega:hover{display:block}
+.mega-in{display:grid;grid-template-columns:repeat(3,1fr) 1.3fr;gap:32px;padding:32px 24px}
+.mega h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.mega li{list-style:none;padding:5px 0;font-weight:600}
+.mega .promo{background:var(--ink);color:#fff;border-radius:var(--r);padding:22px;display:flex;flex-direction:column;justify-content:end;min-height:180px}
+.mega .promo b{font-size:22px;font-weight:900;text-transform:uppercase}
+
+/* --- slideshow hero --- */
+.hero{position:relative;background:#0B0B0C;color:#fff;overflow:hidden}
+.slide{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;min-height:620px;max-width:var(--max);margin:0 auto;padding:0 24px}
+.slide .copy{padding:60px 0}
+.kick{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.hero h1{font-size:clamp(46px,7vw,96px)}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero p{font-size:18px;color:#CFCFD4;max-width:470px;margin:22px 0 30px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero .ctas .btn-line{color:#fff}
+.hero .pic{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.hero .pic:before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,90,0,.35),transparent 65%)}
+.hero .pic img{position:relative;width:min(560px,100%);filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.dots{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:8px}
+.dots i{width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,.3)}.dots i:first-child{background:var(--orange)}
+
+/* --- trust strip (multicolumn) --- */
+.trust{background:var(--orange);color:#000}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:20px;padding-bottom:20px}
+.trust div{display:flex;gap:12px;align-items:center;font-weight:700;font-size:15px;line-height:1.25}
+.trust svg{width:28px;height:28px;flex:none}
+.trust small{display:block;font-weight:500;font-size:13px}
+
+/* --- collection list --- */
+.cols{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.col{background:var(--bg-2);border-radius:var(--r);padding:18px 18px 16px;transition:transform .2s}
+.col:hover{transform:translateY(-3px)}
+.col .im{aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.col .im img{max-height:100%;object-fit:contain;mix-blend-mode:multiply}
+.col b{display:flex;justify-content:space-between;font-weight:800;text-transform:uppercase;font-size:15px}
+.col b span{color:var(--muted);font-weight:600}
+
+/* --- product grid --- */
+.tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.tabs button{border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px}
+.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card .ph{position:relative;background:var(--bg-2);border-radius:var(--r);aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:22px;overflow:hidden}
+.card .ph img{max-height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .35s}
+.card:hover .ph img{transform:scale(1.05)}
+.badge{position:absolute;top:12px;left:12px;background:var(--orange);color:#000;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:5px 9px;border-radius:999px}
+.badge.dark{background:var(--ink);color:#fff}
+.quick{position:absolute;left:12px;right:12px;bottom:12px;background:#fff;border-radius:999px;height:42px;font-weight:700;font-size:14px;opacity:0;transform:translateY(8px);transition:.25s;box-shadow:0 6px 16px rgba(0,0,0,.1)}
+.card:hover .quick{opacity:1;transform:none}
+.card h3{font-size:16px;text-transform:none;letter-spacing:0;font-weight:700;margin:14px 0 4px;line-height:1.3}
+.card .rev{font-size:13px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.card .rev i{font-style:normal;color:#C9C6BF;letter-spacing:1px}
+.card .pr{font-weight:800;margin-top:6px}
+.card .pr s{color:var(--muted);font-weight:500;margin-left:6px}
+.swatch{display:flex;gap:6px;margin-top:8px}
+.swatch i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.15)}
+
+/* --- image with text / finder --- */
+.split{display:grid;grid-template-columns:1fr 1fr;border-radius:18px;overflow:hidden;background:var(--ink);color:#fff}
+.split .l{padding:56px}
+.split h2{font-size:clamp(32px,4vw,52px);margin:10px 0 18px}
+.split p{color:#CFCFD4;max-width:440px;margin-bottom:26px}
+.quiz{display:grid;gap:10px;max-width:440px;margin-bottom:26px}
+.quiz div{display:flex;justify-content:space-between;align-items:center;border:1px solid #2B2B2E;border-radius:12px;padding:14px 16px;font-weight:600}
+.quiz div span{color:var(--orange);font-size:13px}
+.split .r{background:radial-gradient(circle at 60% 50%,rgba(255,90,0,.35),transparent 60%),#141415;display:flex;align-items:center;justify-content:center;padding:40px}
+.split .r img{width:min(480px,100%);filter:drop-shadow(0 20px 30px rgba(0,0,0,.5))}
+
+/* --- comparison (custom liquid section / table) --- */
+.cmp{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
+.cmp table{width:100%;border-collapse:collapse;min-width:720px;font-size:15px}
+.cmp th,.cmp td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+.cmp thead th{background:var(--bg-2);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.cmp td:first-child{font-weight:700}
+.cmp tr:last-child td{border-bottom:0}
+
+/* --- showroom + reviews --- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{background:var(--bg-2);border-radius:18px;padding:40px}
+.box h2{font-size:clamp(28px,3.4vw,40px);margin:8px 0 16px}
+.box p{color:var(--ink-2);margin-bottom:22px}
+.box ul{list-style:none;display:grid;gap:8px;margin-bottom:24px;font-weight:600}
+.box ul li:before{content:"→ ";color:var(--orange-text)}
+.rv{display:grid;gap:12px}
+.rv .q{background:#fff;border:1px dashed #CFCBC2;border-radius:12px;padding:18px;color:var(--muted);font-size:14px}
+.rv .q i{font-style:normal;color:#C9C6BF;letter-spacing:2px;display:block;margin-bottom:6px}
+
+/* --- newsletter + footer --- */
+.news{background:var(--orange);color:#000;border-radius:18px;padding:44px;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}
+.news h2{font-size:clamp(28px,3.4vw,42px)}
+.news form{display:flex;gap:10px}
+.news input{flex:1;height:52px;border-radius:999px;border:0;padding:0 20px;font:500 15px var(--sans)}
+.news .btn{background:#000;color:#fff}
+footer{background:var(--ink);color:#BDBDC2;margin-top:72px;padding:60px 0 28px;font-size:14px}
+.fg{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:30px}
+footer h4{color:#fff;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+footer li{list-style:none;padding:4px 0}
+footer .logo b{color:#fff}
+.pay{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:1px solid #2B2B2E;justify-content:space-between;align-items:center}
+.pay span{border:1px solid #3A3A3E;border-radius:6px;padding:5px 9px;font-size:11px;font-weight:700;color:#fff}
+
+/* --- age gate (app) --- */
+.gate{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px}
+.gate[hidden]{display:none}
+.gate .card2{background:#fff;border-radius:18px;max-width:420px;width:100%;padding:34px;text-align:center}
+.gate img{height:56px;margin:0 auto 14px}
+.gate h2{font-size:30px;margin-bottom:10px}
+.gate p{color:var(--muted);font-size:14px;margin-bottom:22px}
+.gate .row{display:grid;gap:10px}
+
+/* --- responsive --- */
+@media (max-width:1024px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .cols{grid-template-columns:repeat(3,1fr)}
+  .nav{gap:18px;font-size:14px}
+}
+@media (max-width:820px){
+  .nav{display:none}.burger{display:block}
+  .hdr{grid-template-columns:auto 1fr auto}.logo{justify-self:center}
+  .slide{grid-template-columns:1fr;min-height:auto;text-align:left}
+  .slide .copy{padding:44px 0 0}
+  .hero .pic{padding:10px 0 60px}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:1fr 1fr;gap:14px}
+  .cols{grid-template-columns:1fr 1fr}
+  .split,.two,.news{grid-template-columns:1fr}
+  .split .l,.box,.news{padding:30px}
+  .fg{grid-template-columns:1fr 1fr}
+  .quick{opacity:1;transform:none;height:36px;font-size:13px}
+  .sec{padding:52px 0}
+  .head{flex-direction:column;align-items:start}
+}
+@media (max-width:480px){
+  .wrap,.slide{padding:0 16px}
+  .news form{flex-direction:column}
+  .logo b{font-size:16px}.logo img{height:36px}
+  .mock{font-size:12px}
+  .mock .long{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- Age verification: Shopify app block -->
+<div class="gate" id="gate" data-t="app" role="dialog" aria-modal="true" aria-labelledby="gate-h">
+  <div class="card2">
+    <img src="his-logo.png" alt="Less Lethal Limited">
+    <h2 id="gate-h">Are you 18 or older?</h2>
+    <p>You must be 18 or older to enter lesslethal.ca and to buy any product on it.</p>
+    <div class="row">
+      <button class="btn btn-o" id="gate-yes">Yes, I'm 18 or older</button>
+      <a class="btn btn-line" href="https://www.google.ca">No, take me back</a>
+    </div>
+  </div>
+  <span class="tag app">App · age verification</span>
+</div>
+
+<div class="ann" data-t="theme">Ships across Canada in 24–48 hours · <span>Same-day pickup</span> at our Vaughan showroom<span class="tag theme">Theme · announcement bar</span></div>
+
+<header data-t="theme">
+  <div class="wrap hdr">
+    <button class="burger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <nav class="nav" aria-label="Main">
+      <a href="#shop" class="has-mega">Launchers ▾</a>
+      <div class="mega"><div class="wrap mega-in">
+        <div><h4>Handheld</h4><ul><li>Byrna CL-XL</li><li>Byrna LE</li><li>Byrna SD</li></ul></div>
+        <div><h4>Long launchers</h4><ul><li>Byrna TCR</li><li>Byrna Mission 4</li></ul></div>
+        <div><h4>Shop by brand</h4><ul><li>Byrna</li><li>Crimson Trace</li><li>Hogue</li><li style="color:var(--muted)">More brands soon</li></ul></div>
+        <a class="promo" href="#finder"><small style="color:var(--orange);font-weight:800;letter-spacing:.12em">NOT SURE?</small><b>Find your launcher in 3 questions</b></a>
+      </div></div>
+      <a href="#cats">Ammo &amp; CO2</a>
+      <a href="#cats">Accessories</a>
+      <a href="#showroom">Showroom</a>
+    </nav>
+    <a class="logo" href="#" aria-label="Less Lethal Limited home"><img src="his-logo.png" alt=""><span><b>LESS LETHAL</b><small>LIMITED</small></span></a>
+    <div class="icons">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Search"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Account"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+      <span class="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Cart"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><i>2</i></span>
+    </div>
+  </div>
+  <span class="tag theme">Theme · header + mega menu</span>
+</header>
+
+<section class="hero" data-t="theme">
+  <div class="slide">
+    <div class="copy">
+      <div class="kick">Canada's less-lethal store</div>
+      <h1>Stop the threat. <em>Not a life.</em></h1>
+      <p>Launchers, ammo and personal safety gear from the brands that set the standard. Priced in Canadian dollars, shipped from Ontario, and ready to try in our Vaughan showroom.</p>
+      <div class="ctas"><a class="btn btn-o" href="#shop">Shop launchers</a><a class="btn btn-line" href="#showroom">Visit the showroom</a></div>
+    </div>
+    <div class="pic"><img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/CLXLBlackRightSideView_2000x.webp-2.jpg?v=1787705659&width=1000" alt="Byrna CL-XL launcher in black" style="mix-blend-mode:normal;border-radius:14px"></div>
+  </div>
+  <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <span class="tag theme">Theme · slideshow</span>
+</section>
+
+<section class="trust" data-t="theme">
+  <div class="wrap">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg><span>No PAL needed<small>Outside the Firearms Act</small></span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><span>Ships in 24–48 h<small>Across Canada</small></span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10 12 4l8 6v10H4z"/><path d="M10 20v-6h4v6"/></svg><span>Vaughan showroom<small>Try before you buy</small></span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9.5c0-1.4 1.3-2.5 3-2.5s3 1 3 2.3c0 2.7-6 1.8-6 4.6 0 1.3 1.3 2.6 3 2.6s3-1.1 3-2.5M12 5v2M12 17v2"/></svg><span>Priced in CAD<small>No currency surprises</small></span></div>
+  </div>
+  <span class="tag theme">Theme · multicolumn</span>
+</section>
+
+<section class="sec" id="cats" data-t="theme">
+  <div class="wrap">
+    <div class="head"><h2>Shop by category</h2><a href="#">All products</a></div>
+    <div class="cols">
+      <a class="col" href="#"><div class="im"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_SD_Orange_Can_800x_036ba176-7464-4ac1-b816-822c5677ebb6.webp?v=1707674657&width=400" alt=""></div><b>Handheld <span>3</span></b></a>
+      <a class="col" href="#"><div class="im"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/TCR_Square_800x_7d200533-31ff-402d-9882-ab59fe894f20.png?v=1709925151&width=400" alt=""></div><b>Long <span>2</span></b></a>
+      <a class="col" href="#"><div class="im"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_render_Kinetic_95ct_800x_3c7b10d8-b452-48e3-ac8f-776d931bf5e5.webp?v=1707680879&width=400" alt=""></div><b>Ammo <span>3</span></b></a>
+      <a class="col" href="#"><div class="im"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/12gram_800x_04417652-705e-4dbd-b015-485871e157f5.webp?v=1707681735&width=400" alt=""></div><b>CO2 <span>5</span></b></a>
+      <a class="col" href="#"><div class="im"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/IMG-0001.webp?v=1715803877&width=400" alt=""></div><b>Gear <span>19</span></b></a>
+    </div>
+  </div>
+  <span class="tag theme">Theme · collection list</span>
+</section>
+
+<section class="sec" id="shop" style="padding-top:0" data-t="theme">
+  <div class="wrap">
+    <div class="head"><h2>Best sellers</h2><a href="#">Shop all launchers</a></div>
+    <div class="tabs" role="tablist"><button class="on">Launchers</button><button>Ammo &amp; CO2</button><button>Accessories</button></div>
+    <div class="grid">
+      <a class="card" href="#"><div class="ph"><span class="badge">New</span><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/CLXLBlackRightSideView_2000x.webp-2.jpg?v=1787705659&width=600" alt="Byrna CL-XL launcher"><button class="quick">Quick add</button></div>
+        <h3>Byrna CL-XL Launcher</h3><div class="rev"><i>★★★★★</i>No reviews yet</div><div class="pr">$830.99</div><div class="swatch"><i style="background:#FF5A00"></i><i style="background:#111"></i></div></a>
+      <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Black-Byrna-LE-Plus_Full-Kit-Image_2000x_2a65ff6b-fc61-4286-a93e-d90eb4603f0d.jpg?v=1787704684&width=600" alt="Byrna LE launcher kit"><button class="quick">Quick add</button></div>
+        <h3>Byrna LE Kit</h3><div class="rev"><i>★★★★★</i>No reviews yet</div><div class="pr">$739.99</div><div class="swatch"><i style="background:#111"></i><i style="background:#FF5A00"></i></div></a>
+      <a class="card" href="#"><div class="ph"><span class="badge dark">Best value</span><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_SD_Orange_Can_800x_036ba176-7464-4ac1-b816-822c5677ebb6.webp?v=1707674657&width=600" alt="Byrna SD launcher kit"><button class="quick">Quick add</button></div>
+        <h3>Byrna SD Kit</h3><div class="rev"><i>★★★★★</i>No reviews yet</div><div class="pr">$629.99</div><div class="swatch"><i style="background:#FF5A00"></i><i style="background:#B79E7A"></i><i style="background:#111"></i></div></a>
+      <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Mission_4_Kit_v2_2000x_b8e1616d-7574-4a67-b78f-6d0168490376.webp?v=1753301818&width=600" alt="Byrna Mission 4 bundle"><button class="quick">Quick add</button></div>
+        <h3>Byrna Mission 4 Bundle</h3><div class="rev"><i>★★★★★</i>No reviews yet</div><div class="pr">$999.99</div></a>
+    </div>
+  </div>
+  <span class="tag theme">Theme · featured collection (tabs, quick add)</span>
+</section>
+
+<section class="sec" id="finder" style="padding-top:0" data-t="app">
+  <div class="wrap">
+    <div class="split">
+      <div class="l">
+        <div class="kick">Launcher finder</div>
+        <h2>Which one is right for you?</h2>
+        <p>Three questions, one recommendation, with the kit and accessories that go with it.</p>
+        <div class="quiz">
+          <div>Carry it, or keep it at home? <span>1 / 3</span></div>
+          <div>Your budget <span>2 / 3</span></div>
+          <div>First launcher, or an upgrade? <span>3 / 3</span></div>
+        </div>
+        <a class="btn btn-o" href="#">Start the finder</a>
+      </div>
+      <div class="r"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_left_front_transparent_2000x_2f6252e2-2260-4a37-9854-06207d69ee82.png?v=1787704684&width=900" alt="" aria-hidden="true"></div>
+    </div>
+  </div>
+  <span class="tag app">App · product quiz</span>
+</section>
+
+<section class="sec" style="padding-top:0" data-t="theme">
+  <div class="wrap">
+    <div class="head"><h2>Compare the launchers</h2></div>
+    <div class="cmp"><table>
+      <thead><tr><th></th><th>CL-XL</th><th>LE</th><th>SD</th><th>Mission 4</th><th>TCR</th></tr></thead>
+      <tbody>
+        <tr><td>Type</td><td>Handheld</td><td>Handheld</td><td>Handheld</td><td>Long</td><td>Long</td></tr>
+        <tr><td>Calibre</td><td>.61</td><td>.68</td><td>.68</td><td>.68</td><td>.68</td></tr>
+        <tr><td>CO2</td><td>12 g</td><td>12 g</td><td>8 g</td><td>88 g</td><td>88 g</td></tr>
+        <tr><td>Magazine</td><td>7 + 5 rd</td><td>5 rd</td><td>5 rd</td><td>Hopper</td><td>7 + 12 rd</td></tr>
+        <tr><td>Price</td><td>$830.99</td><td>$739.99</td><td>$629.99</td><td>$999.99</td><td>$899.99</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <span class="tag theme">Theme · custom section</span>
+</section>
+
+<section class="sec" id="showroom" style="padding-top:0">
+  <div class="wrap two">
+    <div class="box" data-t="app">
+      <div class="kick" style="color:var(--orange-text)">Vaughan showroom</div>
+      <h2>Hold it before you buy it</h2>
+      <p>13 – 499 Edgeley Blvd., Vaughan, ON · (905) 251-1493</p>
+      <ul><li>Mon–Fri 10–6, Sat 12–4</li><li>Same-day pickup on online orders</li><li>Book a 20-minute demo</li></ul>
+      <a class="btn btn-o" href="#">Book a demo</a>
+      <span class="tag app">App · booking</span>
+    </div>
+    <div class="box" data-t="app">
+      <div class="kick" style="color:var(--orange-text)">Reviews</div>
+      <h2>From your customers</h2>
+      <div class="rv">
+        <div class="q"><i>★★★★★</i>Verified-buyer reviews appear here once the review requests start going out after each order.</div>
+        <div class="q"><i>★★★★★</i>Shown on every product page too, with photos.</div>
+      </div>
+      <span class="tag app">App · reviews</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0" data-t="theme">
+  <div class="wrap">
+    <div class="news">
+      <div><h2>Restocks and demo days, first</h2><p style="margin-top:10px;font-weight:500">Back-in-stock alerts, new brands, and showroom events. No spam.</p></div>
+      <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Email"><button class="btn">Sign up</button></form>
+    </div>
+  </div>
+  <span class="tag theme">Theme · newsletter (Shopify Email)</span>
+</section>
+
+<footer data-t="theme">
+  <div class="wrap">
+    <div class="fg">
+      <div><a class="logo" href="#"><img src="his-logo.png" alt=""><span><b>LESS LETHAL</b><small>LIMITED</small></span></a>
+        <p style="margin-top:16px;max-width:300px">Canada's less-lethal store. 13 – 499 Edgeley Blvd., Vaughan, ON · (905) 251-1493 · info@lesslethal.ca</p></div>
+      <div><h4>Shop</h4><ul><li>Handheld launchers</li><li>Long launchers</li><li>Ammo &amp; CO2</li><li>Accessories</li></ul></div>
+      <div><h4>Help</h4><ul><li>FAQ</li><li>CA Firearms Act</li><li>Shipping policy</li><li>Final sale &amp; returns</li></ul></div>
+      <div><h4>Company</h4><ul><li>About us</li><li>Showroom</li><li>Business &amp; security quotes</li><li>Instagram</li></ul></div>
+    </div>
+    <div class="pay"><small>© 2026 Less Lethal Limited · Privacy · Terms · Refund</small>
+      <div style="display:flex;gap:6px;flex-wrap:wrap"><span>AMEX</span><span>Apple Pay</span><span>Google Pay</span><span>Mastercard</span><span>Visa</span><span>Shop Pay</span></div></div>
+  </div>
+  <span class="tag theme">Theme · footer</span>
+</footer>
+
+<div class="mock" role="note">
+  <span><b>Route B mockup</b><span class="long"> · premium Shopify theme, his colours</span></span>
+  <button id="tagbtn" aria-pressed="false">Show theme vs apps</button>
+</div>
+
+<script>
+(function(){
+  var p = new URLSearchParams(location.search), gate = document.getElementById('gate');
+  var ok = false; try { ok = sessionStorage.getItem('ll-18') === '1'; } catch(e){}
+  if (p.get('gate') === '0' || (ok && p.get('gate') !== '1')) gate.hidden = true;
+  document.getElementById('gate-yes').onclick = function(){ gate.hidden = true; try { sessionStorage.setItem('ll-18','1'); } catch(e){} };
+  var b = document.getElementById('tagbtn');
+  function set(on){ document.body.classList.toggle('show-tags', on); b.setAttribute('aria-pressed', on); b.textContent = on ? 'Hide labels' : 'Show theme vs apps'; }
+  if (p.get('tags') === '1') set(true);
+  b.onclick = function(){ set(b.getAttribute('aria-pressed') !== 'true'); };
+  document.querySelectorAll('.tabs button').forEach(function(t){ t.onclick = function(){ document.querySelectorAll('.tabs button').forEach(function(x){ x.classList.remove('on'); }); t.classList.add('on'); }; });
+})();
+</script>
+</body>
+</html>
