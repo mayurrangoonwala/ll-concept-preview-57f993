@@ -115,6 +115,33 @@ header.solid{background:rgba(7,9,10,.8);backdrop-filter:blur(14px);border-color:
 .range-copy .big{font:800 clamp(64px,9vw,140px)/.8 var(--display);color:var(--signal);font-variant-numeric:tabular-nums}
 .range-copy .big small{font-size:.35em;color:var(--stone);margin-left:6px}
 
+/* assembly: scroll takes the launcher from exploded parts to assembled, loaded, ready */
+.build{height:520vh;position:relative}
+.build .pin{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1.5fr .9fr;gap:30px;align-items:center}
+.build svg{width:100%;height:auto;max-height:80vh;overflow:visible}
+.part{transition:none}
+.part .body{fill:rgba(198,244,50,.05);stroke:var(--signal);stroke-width:1.6;stroke-linejoin:round}
+.part .det{fill:none;stroke:rgba(198,244,50,.55);stroke-width:1.2}
+.part text,.callout{font:500 11px var(--mono);letter-spacing:.14em;fill:var(--signal);text-transform:uppercase}
+.callout line{stroke:rgba(198,244,50,.5);stroke-dasharray:3 3}
+.round{fill:var(--signal);stroke:none}
+.co2 .body{fill:rgba(198,244,50,.12)}
+.aim{stroke:var(--signal);stroke-width:2;filter:drop-shadow(0 0 6px var(--signal))}
+.flash{fill:var(--signal);filter:blur(6px)}
+.gridlines line{stroke:rgba(198,244,50,.07)}
+.panel h2{font-size:clamp(44px,5.6vw,84px);margin:14px 0 20px}
+.steps{list-style:none;display:grid;gap:4px;margin-bottom:22px}
+.steps li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-2);font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--stone);transition:color .2s}
+.steps li span:last-child{opacity:0}
+.steps li.on{color:var(--bone)}
+.steps li.done{color:var(--signal)}
+.steps li.done span:last-child{opacity:1}
+.meter{height:3px;background:var(--line-2);border-radius:2px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--signal);box-shadow:0 0 12px var(--signal)}
+.status{display:flex;justify-content:space-between;margin-top:12px;font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+.status b{color:var(--signal);font-weight:500}
+.status b.ready{animation:blink 1s steps(2) infinite}
+
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
 .stats div{padding:56px 28px;border-left:1px solid var(--line-2)}
@@ -186,6 +213,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 .rv.in{opacity:1;transform:none}
 
 @media (max-width:900px){
+  .build{height:460vh}
+  .build .pin{grid-template-columns:1fr;align-content:center;gap:10px}
+  .build .panel h2{font-size:36px;margin:8px 0 10px}
+  .build .panel .lede{display:none}
+  .steps{grid-template-columns:1fr 1fr;gap:0 16px;margin-bottom:12px}
+  .steps li{padding:8px 0;font-size:10px}
   .nav{display:none}
   .hero .wrap{grid-template-columns:1fr}
   .stage{max-width:460px;margin:0 auto;width:100%}
@@ -224,7 +257,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 
 <header id="hdr"><div class="wrap hdr">
   <a class="logo" href="#"><span class="mark" aria-hidden="true"></span><span><b>LESS LETHAL</b><small>LIMITED</small></span></a>
-  <nav class="nav" aria-label="Main"><a href="#range">Range</a><a href="#lineup">Lineup</a><a href="#film">In use</a><a href="#visit">Showroom</a></nav>
+  <nav class="nav" aria-label="Main"><a href="#range">Range</a><a href="#build">Assembly</a><a href="#lineup">Lineup</a><a href="#film">In use</a><a href="#visit">Showroom</a></nav>
   <a class="pill" href="#lineup">Explore the lineup</a>
 </div></header>
 
@@ -261,6 +294,58 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   <div class="range-copy"><p>Stop a threat from up to 60 feet away, before anyone gets close enough to touch you or the people you love.</p><div class="big"><span id="ft">0</span><small>FT</small></div></div>
 </div></section>
 
+<section class="build" id="build"><div class="pin wrap">
+  <svg viewBox="40 -60 780 600" role="img" aria-label="A launcher assembling from its parts, then loading CO2 and a magazine">
+    <g class="gridlines" aria-hidden="true"><line x1="40" y1="181" x2="820" y2="181"/><line x1="390" y1="-60" x2="390" y2="540"/></g>
+    <line class="aim" id="aim" x1="684" y1="181" x2="684" y2="181"/>
+    <circle class="flash" id="flash" cx="530" cy="233" r="0"/>
+    <g class="part" data-from="-110,60,-10" data-t="0,.12" id="p-grip">
+      <path class="body" d="M190,250 H330 L312,438 Q310,452 296,452 H198 Q184,452 182,438 L172,264 Q172,250 190,250 Z"/>
+      <path class="det" d="M200,300 H300 M198,330 H298 M196,360 H296"/>
+      <text x="150" y="480">Grip</text></g>
+    <g class="part" data-from="0,0,0" data-t="0,0" id="p-frame">
+      <path class="body" d="M186,212 H604 V250 H470 Q452,250 446,264 L440,290 H352 Q340,290 338,280 L330,250 H186 Z"/>
+      <path class="det" d="M440,264 Q440,302 404,302 H362 Q346,302 344,286"/>
+      <text x="470" y="275">Frame</text></g>
+    <g class="part" data-from="30,150,25" data-t=".06,.2" id="p-trig">
+      <path class="body" d="M388,254 Q408,270 398,292 L392,290 Q398,272 382,258 Z"/>
+      <text x="410" y="300">Trigger</text></g>
+    <g class="part" data-from="0,-140,0" data-t=".12,.28" id="p-slide">
+      <path class="body" d="M170,150 H598 L612,162 V212 H170 Z"/>
+      <path class="det" d="M190,160 V202 M200,160 V202 M210,160 V202 M220,160 V202 M300,168 H560"/>
+      <text x="170" y="138">Upper</text></g>
+    <g class="part" data-from="190,-30,0" data-t=".2,.36" id="p-barrel">
+      <rect class="body" x="598" y="168" width="72" height="26" rx="4"/><circle class="det" cx="672" cy="181" r="12"/>
+      <text x="610" y="160">Barrel</text></g>
+    <g class="part" data-from="0,-180,0" data-t=".28,.44" id="p-rail">
+      <rect class="body" x="430" y="136" width="110" height="14" rx="2"/><rect class="body" x="586" y="140" width="12" height="10"/><rect class="body" x="182" y="140" width="16" height="10"/>
+      <path class="det" d="M442,136 V150 M458,136 V150 M474,136 V150 M490,136 V150 M506,136 V150 M522,136 V150"/>
+      <text x="430" y="126">Sight rail</text></g>
+    <g class="part co2" data-from="0,260,0" data-t=".58,.7" id="p-co2">
+      <rect class="body" x="470" y="222" width="122" height="22" rx="11"/><path class="det" d="M482,233 H560"/>
+      <text x="480" y="270">CO2 · 12 g</text></g>
+    <g class="part" data-from="400,60,0" data-t=".74,.88" id="p-mag">
+      <rect class="body" x="206" y="272" width="88" height="172" rx="6"/>
+      <circle class="round" cx="250" cy="304" r="11"/><circle class="round" cx="250" cy="332" r="11"/><circle class="round" cx="250" cy="360" r="11"/><circle class="round" cx="250" cy="388" r="11"/><circle class="round" cx="250" cy="416" r="11"/>
+      <text x="200" y="468">Magazine · 5 rd</text></g>
+  </svg>
+  <div class="panel">
+    <div class="hud">// 02 · Built to be ready</div>
+    <h2>Parts to ready in one motion.</h2>
+    <p class="lede" style="color:var(--fg2);margin-bottom:22px">Load the CO2, seat the magazine, and it's ready. Your first trigger pull pierces the cartridge: nothing else to do.</p>
+    <ol class="steps" id="steps">
+      <li><span>01 Frame + grip</span><span>✓</span></li>
+      <li><span>02 Upper + barrel</span><span>✓</span></li>
+      <li><span>03 Sight rail</span><span>✓</span></li>
+      <li><span>04 Load rounds</span><span>✓</span></li>
+      <li><span>05 Insert CO2</span><span>✓</span></li>
+      <li><span>06 Seat magazine</span><span>✓</span></li>
+    </ol>
+    <div class="meter"><i id="meter"></i></div>
+    <div class="status"><span>Status</span><b id="status">Exploded</b></div>
+  </div>
+</div></section>
+
 <section class="stats">
   <div class="rv"><span class="hud dim">Range</span><b><span data-count="60">0</span><em> ft</em></b><p>Stop a threat before it reaches you.</p></div>
   <div class="rv"><span class="hud dim">Steps</span><b><span data-count="1">0</span><em> pull</em></b><p>If it's loaded, it's ready. No buttons to press, nothing to remember.</p></div>
@@ -268,7 +353,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 </section>
 
 <section class="lineup" id="lineup">
-  <div class="wrap top rv"><div><div class="hud">// 02 · The lineup</div><h2 style="margin-top:16px">Five launchers.<br>One for every role.</h2></div>
+  <div class="wrap top rv"><div><div class="hud">// 03 · The lineup</div><h2 style="margin-top:16px">Five launchers.<br>One for every role.</h2></div>
     <div class="arrows"><button id="prev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button id="next" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
   <div class="rail" id="rail">
     <div class="unit"><div class="in"><div class="ph"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/CLXLBlackRightSideView_2000x.webp-2.jpg?v=1787705659&width=600" alt="Byrna CL-XL"></div><div class="idx"><span class="hud">01 / Handheld</span><span class="hud dim">Best seller</span></div><h3>CL-XL</h3><dl><div><dt>Calibre</dt><dd>.61</dd></div><div><dt>Velocity</dt><dd>410 ft/s</dd></div><div><dt>Power</dt><dd>12 g CO2</dd></div><div><dt>Mags</dt><dd>7 + 5 rd</dd></div></dl><div class="foot"><span class="price">$830.99</span><a class="pill" href="#">View</a></div></div></div>
@@ -284,14 +369,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
     <div class="rec"><i></i><span class="hud dim">Customer footage</span></div>
     <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_left_front_transparent_2000x_2f6252e2-2260-4a37-9854-06207d69ee82.png?v=1787704684&width=900" alt="" aria-hidden="true">
-    <div class="cap"><div class="hud">// 03 · In real hands</div><h2 style="margin-top:14px">See it stop a threat.</h2><button class="play" aria-label="Play video"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div>
+    <div class="cap"><div class="hud">// 04 · In real hands</div><h2 style="margin-top:14px">See it stop a threat.</h2><button class="play" aria-label="Play video"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div>
   </div>
   <p class="hud dim" style="margin-top:14px">Placeholder: Byrna customer videos go here, once usage rights are confirmed.</p>
 </div></section>
 
 <section class="visit" id="visit"><div class="wrap">
   <div class="box rv"><div class="in">
-    <div><div class="hud">// 04 · Vaughan showroom</div><h2 style="margin-top:16px">Hold one <em>before you decide.</em></h2><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="pill fill" href="#">Book a demo</a><a class="pill" href="#">Get directions</a></div></div>
+    <div><div class="hud">// 05 · Vaughan showroom</div><h2 style="margin-top:16px">Hold one <em>before you decide.</em></h2><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="pill fill" href="#">Book a demo</a><a class="pill" href="#">Get directions</a></div></div>
     <div class="info">
       <div><span class="hud dim">Location</span><p>Unit 13, 499 Edgeley Blvd., Vaughan, ON L4K 4H3</p></div>
       <div><span class="hud dim">Hours</span><p>Mon–Fri 10–6 · Sat 12–4 · Sun closed</p></div>
@@ -335,6 +420,32 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     ticks.forEach(function(t, i){ t.classList.toggle('on', p >= i / (ticks.length - 1) - .001); });
   }
   addEventListener('scroll', onRange, {passive:true}); onRange();
+
+
+  // assembly: map scroll to exploded -> assembled -> loaded -> ready
+  var build=document.getElementById('build'), parts=[].slice.call(document.querySelectorAll('#build .part')),
+      rounds=[].slice.call(document.querySelectorAll('#p-mag .round')), steps=[].slice.call(document.querySelectorAll('#steps li')),
+      meter=document.getElementById('meter'), status=document.getElementById('status'), aim=document.getElementById('aim'), flash=document.getElementById('flash');
+  var ease=function(k){ return 1-Math.pow(1-k,3); };
+  var bounds=[.12,.36,.44,.58,.7,.88];
+  function onBuild(){
+    var r=build.getBoundingClientRect(), total=r.height-innerHeight;
+    var p=reduce?1:Math.min(1,Math.max(0,-r.top/total));
+    parts.forEach(function(g){
+      var f=g.dataset.from.split(',').map(Number), t=g.dataset.t.split(',').map(Number);
+      var k=t[1]===t[0]?1:ease(Math.min(1,Math.max(0,(p-t[0])/(t[1]-t[0]))));
+      g.setAttribute('transform','translate('+(f[0]*(1-k))+' '+(f[1]*(1-k))+') rotate('+(f[2]*(1-k))+' 390 280)');
+      var tx=g.querySelector('text'); if(tx) tx.style.opacity=g.id==='p-frame'?(p<.44?1:0):Math.max(0,1-k*1.4);
+    });
+    rounds.forEach(function(c,i){ var a=.44+i*.025; c.style.opacity=p>=a?1:.12; });
+    flash.setAttribute('r', p>.66&&p<.72?18:0);
+    var rk=Math.min(1,Math.max(0,(p-.9)/.08)); aim.setAttribute('x2',684+rk*140);
+    steps.forEach(function(li,i){ var lo=i?bounds[i-1]:0; li.classList.toggle('done',p>=bounds[i]); li.classList.toggle('on',p>=lo&&p<bounds[i]); });
+    meter.style.width=(p*100)+'%';
+    var st=p<.02?'Exploded':p<.44?'Assembling':p<.58?'Loading rounds':p<.7?'Inserting CO2':p<.88?'Seating magazine':'Ready';
+    status.textContent=st; status.classList.toggle('ready',st==='Ready');
+  }
+  addEventListener('scroll', onBuild, {passive:true}); onBuild();
 
   // reveals + count-ups
   function count(el){
