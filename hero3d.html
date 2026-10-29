@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Less Lethal · Byrna LE</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Byrna LE, in orange or black. In stock in Ontario.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Inter:wght@400;500;600&family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<style>
+/* Concept 3: full-screen product hero in Byrna's black + orange.
+   Adapted from a soda-launch template: the can became the Byrna LE, the
+   cherries/blueberries became kinetic projectiles / CO2 cartridges, the
+   bubbles became embers, the flavours became the LE's two colours. */
+:root{
+  --text-color:#ffffff;
+  --muted-color:rgba(255,255,255,.72);
+  --glass-bg:rgba(255,255,255,.05);
+  --glass-border:rgba(255,255,255,.12);
+  --accent:#FF5A00;
+  --accent-ink:#0B0B0C;
+  --font-main:'Inter',sans-serif;
+  --font-heading:'Barlow Condensed',sans-serif;
+  /* Orange theme (default) */
+  --bg-inner:#7A2C06;
+  --bg-mid:#2A0F04;
+  --bg-outer:#0B0605;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:radial-gradient(circle at center,var(--bg-inner) 0%,var(--bg-mid) 50%,var(--bg-outer) 100%);
+  color:var(--text-color);font-family:var(--font-main);
+  overflow:hidden;height:100vh;
+  transition:background 1.2s cubic-bezier(.4,0,.2,1);
+}
+body.stealth{--bg-inner:#3A3E43;--bg-mid:#16181B;--bg-outer:#050506}
+
+/* 1. embers (were bubbles) */
+#embers{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.ember{position:absolute;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#FFD2B0 0%,var(--accent) 45%,transparent 70%)}
+body.stealth .ember{background:radial-gradient(circle,#fff 0%,rgba(255,255,255,.5) 40%,transparent 70%)}
+@keyframes floatUpImg{
+  0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+  10%{opacity:.5}90%{opacity:.5}
+  100%{transform:translateY(-110vh) translateX(30px) rotate(360deg);opacity:0}
+}
+
+/* 2. header */
+.header{display:flex;justify-content:space-between;align-items:center;padding:2rem 4%;position:fixed;top:0;width:100%;z-index:200}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo img{width:34px;height:34px;object-fit:contain}
+.logo b{display:block;font:800 1.45rem/1 var(--font-heading);letter-spacing:.04em}
+.logo small{display:block;font:600 .55rem/1 var(--font-main);letter-spacing:.34em;color:var(--accent);margin-top:3px}
+.nav{display:flex;gap:.5rem;padding:.4rem;border-radius:100px}
+.nav.glass{position:relative;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);box-shadow:0 8px 32px rgba(0,0,0,.1),inset 0 0 0 1px rgba(255,255,255,.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-item{font-family:'Manrope',sans-serif;color:var(--muted-color);text-decoration:none;font-size:.85rem;font-weight:500;padding:.5rem 1.2rem;border-radius:100px;transition:all .3s ease}
+.nav-item:hover,.nav-item.active{background:var(--accent);color:var(--accent-ink)}
+.contact-btn{background:rgba(0,0,0,.5);color:#fff;border:none;padding:.9rem 2rem;border-radius:100px;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .3s ease}
+.contact-btn:hover{background:rgba(0,0,0,.7);transform:translateY(-2px)}
+
+/* 3. hero */
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;padding:0 4%;padding-top:5rem}
+.hero-content{display:flex;justify-content:space-between;align-items:stretch;width:100%;height:100%;position:relative}
+.main-title,.side-title{font-family:var(--font-heading);font-weight:800;font-style:italic;font-size:clamp(5rem,10vw,12rem);line-height:.82;text-transform:uppercase;white-space:nowrap;color:#fff;letter-spacing:-.01em}
+.outline{color:transparent;-webkit-text-stroke:2px var(--accent)}
+
+/* 3a. far background: small CO2 caps drifting (were leaves) */
+.leaves-container{position:absolute;inset:0;pointer-events:none;z-index:-1;transition:transform .1s ease-out}
+.leaf{position:absolute;width:60px;height:60px;pointer-events:none;filter:drop-shadow(0 5px 15px rgba(0,0,0,.25))}
+.l1{top:10%;left:15%}
+.l2{top:40%;left:80%;width:140px;height:140px;opacity:.4}
+.l3{top:70%;left:75%;width:80px;height:80px}
+.l4{top:85%;left:20%;width:120px;height:120px;opacity:.3}
+
+/* 3b. left column */
+.hero-left{display:flex;flex-direction:column;height:100%;padding:6rem 0;gap:2rem;z-index:100}
+.description{color:var(--muted-color);font-size:1.1rem;line-height:1.6;max-width:400px}
+.primary-btn{display:flex;align-items:center;gap:1.5rem;background:rgba(0,0,0,.5);color:#fff;border:none;padding:.4rem .4rem .4rem 1.5rem;border-radius:100px;font-weight:700;cursor:pointer;width:fit-content;transition:all .3s ease;font-size:1rem}
+.primary-btn:hover{background:rgba(0,0,0,.7);transform:translateY(-3px)}
+.plus-icon{background:var(--accent);color:var(--accent-ink);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:1.4rem;font-weight:900;line-height:1;padding-bottom:2px}
+.award-badge{display:flex;align-items:center;gap:1rem;margin-top:auto}
+.award-icon{width:48px;height:48px;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);font:800 1.2rem var(--font-heading)}
+.award-text{display:flex;flex-direction:column}
+.award-title{font-size:.7rem;letter-spacing:.1em;color:var(--muted-color)}
+.award-subtitle{font-size:.85rem;font-weight:600}
+
+/* projectiles / CO2 (were berries) */
+.berries-container{position:absolute;inset:0;pointer-events:none;z-index:110;transition:transform .1s ease-out}
+.berries-container-bg{position:absolute;inset:0;pointer-events:none;z-index:0;transition:transform .1s ease-out}
+.berry{position:absolute;width:120px;height:120px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35));transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.berry svg{width:100%;height:100%;display:block}
+.b1{top:22%;left:30%;width:80px;height:80px}
+.b2{top:60%;left:42%;width:60px;height:60px}
+.b3{top:26%;left:64%;width:86px;height:86px}
+.b4{top:15%;left:48%;width:70px;height:70px}
+.b5{top:78%;left:24%;width:56px;height:56px}
+.b6{top:58%;left:70%;width:70px;height:70px}
+.b7{top:15%;left:40%;width:44px;height:44px;opacity:.7}
+.b8{top:50%;left:55%;width:40px;height:40px;opacity:.6}
+.b9{top:80%;left:35%;width:42px;height:42px;opacity:.7}
+
+/* 3d. center product */
+.hero-center{display:flex;justify-content:center;align-items:center;position:absolute;inset:0;z-index:1;opacity:0;animation:fadeIn 1.5s ease-out .3s forwards,float 6s ease-in-out infinite;pointer-events:none;background:radial-gradient(circle at center,rgba(255,90,0,.14) 0%,transparent 60%)}
+body.stealth .hero-center{background:radial-gradient(circle at center,rgba(255,255,255,.08) 0%,transparent 60%)}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.stage{position:fixed;top:52%;left:50%;width:min(40vw,640px);transform:translate(-50%,-50%) rotate(-12deg);perspective:1400px;z-index:1}
+#product{width:100%;display:block;transform-style:preserve-3d;filter:drop-shadow(0 40px 50px rgba(0,0,0,.6));will-change:transform}
+
+/* 3f. right column */
+.hero-right{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;text-align:right;height:100%;padding:6rem 0;z-index:100;width:450px;pointer-events:none}
+.product-carousel{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-end;pointer-events:auto}
+.carousel-cards{display:flex;gap:1rem}
+.card{background:var(--glass-bg);border:1px solid var(--glass-border);padding:1rem;padding-top:5rem;border-radius:28px;display:flex;flex-direction:column;align-items:center;gap:1.5rem;cursor:pointer;transition:all .4s cubic-bezier(.175,.885,.32,1.275);width:135px;position:relative;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center;color:inherit;font:inherit}
+.card:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4)}
+.card.active{border-color:var(--accent)}
+.card img{width:150px;height:auto;margin-top:-7rem;filter:drop-shadow(0 20px 35px rgba(0,0,0,.5));transition:transform .5s cubic-bezier(.34,1.56,.64,1)!important;display:block;will-change:transform;pointer-events:none}
+.card:hover img{transform:translateY(-24px) rotate(-12deg) scale(1.12)!important}
+.card-info{display:flex;flex-direction:column;font-size:.72rem;width:100%}
+.card-info span:first-child{font-weight:600}
+.card-info span:last-child{color:var(--muted-color)}
+.carousel-nav{display:flex;gap:1rem}
+.nav-arrow{background:var(--glass-bg);border:1px solid var(--glass-border);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.nav-arrow:hover{background:rgba(255,255,255,.1)}
+.side-title{align-self:flex-end;text-align:right}
+
+@media (max-width:1200px){
+  .stage{width:min(46vw,560px)}
+  .main-title,.side-title{font-size:5rem}
+}
+/* phones: let it scroll and stack */
+@media (max-width:820px){
+  html,body{overflow-x:clip}
+  body{overflow-y:auto;height:auto;min-height:100vh}
+  .leaves-container,.berries-container-bg{overflow:hidden}
+  .header{padding:1rem 16px;background:rgba(11,6,5,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  body.stealth .header{background:rgba(5,5,6,.82)}
+  .nav,.contact-btn{display:none}
+  .hero{height:auto;padding:0 16px;padding-top:5.5rem}
+  .hero-content{flex-direction:column;height:auto}
+  .hero-left,.hero-right{padding:0;width:100%}
+  .hero-left{gap:1.2rem}
+  .main-title{font-size:4.6rem}
+  .hero-center{position:relative;inset:auto;height:56vw;min-height:220px;order:2}
+  .stage{position:absolute;width:92vw}
+  .hero-right{order:3;align-items:stretch;text-align:left;gap:1.6rem;padding:1rem 0 2.5rem}
+  .product-carousel{align-items:stretch}
+  .carousel-cards{justify-content:center;margin-top:5rem}
+  .carousel-nav{justify-content:center}
+  .side-title{font-size:3.6rem;align-self:flex-start;text-align:left}
+  .award-badge{margin-top:.5rem}
+  .berries-container{position:fixed;z-index:0}
+  .berries-container .berry{opacity:.55}
+  .b1,.b3,.b6{width:64px;height:64px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-center{animation:fadeIn .01s forwards}
+  #embers{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="embers"></div>
+
+<header class="header">
+  <div class="logo"><img src="his-logo.png" alt=""><span><b>LESS LETHAL</b><small>LIMITED</small></span></div>
+  <nav class="nav glass" aria-label="Main">
+    <a href="#" class="nav-item active">Home</a>
+    <a href="#" class="nav-item">Launchers</a>
+    <a href="#" class="nav-item">Ammo &amp; CO2</a>
+    <a href="#" class="nav-item">Is it legal?</a>
+    <a href="#" class="nav-item">Showroom</a>
+  </nav>
+  <button class="contact-btn">Book a demo</button>
+</header>
+
+<main class="hero">
+  <div class="hero-content">
+
+    <div class="leaves-container" aria-hidden="true">
+      <div class="leaf l1" data-k="co2"></div>
+      <div class="leaf l2" data-k="ball"></div>
+      <div class="leaf l3" data-k="co2"></div>
+      <div class="leaf l4" data-k="ball"></div>
+    </div>
+
+    <div class="hero-left">
+      <h1 class="main-title"><span class="outline">Stop the</span><br>Threat</h1>
+      <p class="description">
+        The Byrna LE stops a threat from up to 60 feet. <br>
+        No PAL, no permits, nothing to fumble — <br>
+        in stock in Ontario, priced in CAD.
+      </p>
+      <div class="cta-group">
+        <button class="primary-btn">Shop the LE <span class="plus-icon">+</span></button>
+      </div>
+      <div class="award-badge">
+        <div class="award-icon">4.3</div>
+        <div class="award-text">
+          <span class="award-title">GOOGLE · 26 REVIEWS</span>
+          <span class="award-subtitle">VAUGHAN SHOWROOM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="berries-container-bg" aria-hidden="true">
+      <div class="berry b7"></div><div class="berry b8"></div><div class="berry b9"></div>
+    </div>
+
+    <div class="hero-center">
+      <div class="stage"><img id="product" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_left_front_transparent_2000x_2f6252e2-2260-4a37-9854-06207d69ee82.png?v=1787704684&width=1200" alt="Byrna LE launcher in orange"></div>
+    </div>
+
+    <div class="berries-container" aria-hidden="true">
+      <div class="berry b1"></div><div class="berry b2"></div><div class="berry b3"></div>
+      <div class="berry b4"></div><div class="berry b5"></div><div class="berry b6"></div>
+    </div>
+
+    <div class="hero-right">
+      <div class="product-carousel">
+        <div class="carousel-cards">
+          <button class="card active" data-flavor="orange">
+            <img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_Right_transparent_2000x_0d37bddf-691d-4503-8710-41d97c5cd223.png?v=1787704684&width=400" alt="">
+            <div class="card-info"><span>LE · Orange</span><span>$739.99</span></div>
+          </button>
+          <button class="card" data-flavor="stealth">
+            <img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Black_-_Right_transparent_2000x_04b61ba3-a0ac-4255-b751-76a9f4b42d11.png?v=1787704684&width=400" alt="" style="filter:brightness(1.25)">
+            <div class="card-info"><span>LE · Black</span><span>$739.99</span></div>
+          </button>
+        </div>
+        <div class="carousel-nav">
+          <button class="nav-arrow" data-dir="-1" aria-label="Previous colour">←</button>
+          <button class="nav-arrow" data-dir="1" aria-label="Next colour">→</button>
+        </div>
+      </div>
+      <h2 class="side-title"><span class="outline">Not a</span><br>Life</h2>
+    </div>
+
+  </div>
+</main>
+
+<div style="display:none">
+  <img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Black_-_left_front_transparent_2000x_0779bfef-6094-4d1d-95e6-bf193a152f4d.png?v=1787704684&width=1200" alt="">
+</div>
+
+<script>
+// Objects drawn in code (no 3D assets needed): a kinetic projectile and a 12 g CO2 cartridge.
+const ART = {
+  ball: () => `<svg viewBox="0 0 100 100"><defs><radialGradient id="g${Math.random().toString(36).slice(2,7)}" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#FFC9A3"/><stop offset=".35" stop-color="#FF6A14"/><stop offset="1" stop-color="#6E2300"/></radialGradient></defs><circle cx="50" cy="50" r="44" fill="url(#__)"/><path d="M14 52 Q50 66 86 52" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3"/><ellipse cx="36" cy="30" rx="12" ry="7" fill="rgba(255,255,255,.45)" transform="rotate(-25 36 30)"/></svg>`,
+  co2: () => `<svg viewBox="0 0 100 100"><defs><linearGradient id="g${Math.random().toString(36).slice(2,7)}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2F3F5"/><stop offset=".45" stop-color="#9AA0A6"/><stop offset="1" stop-color="#3B3F44"/></linearGradient></defs><g transform="rotate(-30 50 50)"><rect x="14" y="38" width="64" height="24" rx="12" fill="url(#__)"/><path d="M78 44 L90 47 V53 L78 56 Z" fill="#7C8288"/><rect x="40" y="38" width="3" height="24" fill="rgba(255,90,0,.85)"/><rect x="22" y="42" width="40" height="4" rx="2" fill="rgba(255,255,255,.55)"/></g></svg>`
+};
+function draw(el, kind){ let s = ART[kind](); const id = s.match(/id="(g\w+)"/)[1]; el.innerHTML = s.replace('url(#__)', `url(#${id})`); }
+
+const product = document.querySelector('#product');
+const berriesFG = document.querySelector('.berries-container');
+const berriesBG = document.querySelector('.berries-container-bg');
+const leavesBG = document.querySelector('.leaves-container');
+const allBerries = document.querySelectorAll('.berry');
+const cards = document.querySelectorAll('.card');
+const SRC = {
+  orange: 'https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_left_front_transparent_2000x_2f6252e2-2260-4a37-9854-06207d69ee82.png?v=1787704684&width=1200',
+  stealth: 'https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Black_-_left_front_transparent_2000x_0779bfef-6094-4d1d-95e6-bf193a152f4d.png?v=1787704684&width=1200'
+};
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let isSwitching = false, switchSpin = 0, current = 'orange';
+
+allBerries.forEach(b => draw(b, 'ball'));
+document.querySelectorAll('.leaf').forEach(l => draw(l, l.dataset.k));
+
+cards.forEach(card => card.addEventListener('click', () => {
+  if (isSwitching || card.dataset.flavor === current) return;
+  cards.forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  switchFlavor(card.dataset.flavor);
+}));
+document.querySelectorAll('.nav-arrow').forEach(a => a.addEventListener('click', () => {
+  const next = [...cards].find(c => c.dataset.flavor !== current); if (next) next.click();
+}));
+
+function switchFlavor(flavor){
+  if (isSwitching) return;
+  isSwitching = true; current = flavor;
+  const body = document.body, heroCenter = document.querySelector('.hero-center');
+  const t = flavor === 'stealth' ? { inner:'#3A3E43', mid:'#16181B', outer:'#050506' } : { inner:'#7A2C06', mid:'#2A0F04', outer:'#0B0605' };
+  gsap.to(body, { '--bg-inner':t.inner, '--bg-mid':t.mid, '--bg-outer':t.outer, duration:1.5, ease:'power2.inOut' });
+
+  // launcher: 360 spin + blur, swap colour at the peak, settle to 720
+  const spin = { val:0, blur:0 };
+  gsap.to(spin, { val:360, blur:15, duration:.6, ease:'power2.in',
+    onUpdate: () => { switchSpin = spin.val; product.style.filter = `blur(${spin.blur}px) drop-shadow(0 40px 50px rgba(0,0,0,.6))`; },
+    onComplete: () => {
+      body.classList.toggle('stealth', flavor === 'stealth');
+      product.src = SRC[flavor]; product.alt = 'Byrna LE launcher in ' + (flavor === 'stealth' ? 'black' : 'orange');
+      gsap.to(spin, { val:720, blur:0, duration:1.5, ease:'back.out(0.7)',
+        onUpdate: () => { switchSpin = spin.val; product.style.filter = `blur(${spin.blur}px) drop-shadow(0 40px 50px rgba(0,0,0,.6))`; },
+        onComplete: () => { switchSpin = 0; product.style.filter = ''; } });
+    } });
+
+  // projectiles implode to the centre, swap to CO2 cartridges (or back), explode out
+  let done = 0;
+  allBerries.forEach(berry => {
+    const bW = berry.offsetWidth / 2, bH = berry.offsetHeight / 2;
+    const cx = innerWidth / 2 - berry.offsetLeft - bW, cy = innerHeight / 2 - berry.offsetTop - bH;
+    const a0 = parseFloat(berry.dataset.angle) || 0, bx = parseFloat(berry.dataset.baseX) || 0, by = parseFloat(berry.dataset.baseY) || 0;
+    const nx = (Math.random() - .5) * 200, ny = (Math.random() - .5) * 200;
+    gsap.set(berry, { rotation:a0, x:bx, y:by });
+    gsap.timeline()
+      .to(berry, { x:cx, y:cy, rotation:a0 + 45, scale:.1, opacity:0, duration:.5, ease:'power2.in',
+        onComplete: () => { draw(berry, flavor === 'stealth' ? 'co2' : 'ball'); heroCenter.style.zIndex = 50; } })
+      .to(berry, { duration:.3 })
+      .to(berry, { onStart: () => { heroCenter.style.zIndex = 1; }, x:nx, y:ny, rotation:a0 + 90, scale:1, opacity:1, duration:.9, ease:'back.out(1.5)',
+        onComplete: () => {
+          berry.dataset.angle = a0 + 90; berry.dataset.baseX = nx; berry.dataset.baseY = ny; berry.dataset.rx = 0; berry.dataset.ry = 0;
+          gsap.set(berry, { clearProps:'all' });
+          if (++done === allBerries.length) isSwitching = false;
+        } });
+  });
+}
+
+allBerries.forEach(b => { b.dataset.rx = 0; b.dataset.ry = 0; b.dataset.angle = Math.random() * 360; b.dataset.baseX = 0; b.dataset.baseY = 0; });
+const mouse = { x:0, y:0, px:-9999, py:-9999 }, cur = { x:0, y:0 };
+addEventListener('mousemove', e => { mouse.x = e.clientX / innerWidth - .5; mouse.y = e.clientY / innerHeight - .5; mouse.px = e.clientX; mouse.py = e.clientY; });
+
+function animate(){
+  const time = Date.now() * .001;
+  cur.x += (mouse.x - cur.x) * .05; cur.y += (mouse.y - cur.y) * .05;
+
+  // launcher tilts toward the cursor (+ the switch spin)
+  product.style.transform = `rotateY(${cur.x * 40 + switchSpin}deg) rotateX(${-cur.y * 20}deg)`;
+
+  berriesFG.style.transform = `translate(${cur.x * 60}px, ${cur.y * 60}px)`;
+  berriesBG.style.transform = `translate(${cur.x * -30}px, ${cur.y * -30}px)`;
+  leavesBG.style.transform = `translate(${cur.x * -15}px, ${cur.y * -15}px)`;
+
+  if (!isSwitching && !reduce){
+    allBerries.forEach((berry, i) => {
+      const r = berry.getBoundingClientRect(), bx = r.left + r.width / 2, by = r.top + r.height / 2;
+      const dx = mouse.px - bx, dy = mouse.py - by, dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      let tx = 0, ty = 0, sm = 1;
+      if (dist < 400){ const f = (400 - dist) / 400; tx = dx / dist * f * -80; ty = dy / dist * f * -80; sm = 1 + f * 5; }
+      let rx = +berry.dataset.rx, ry = +berry.dataset.ry, ang = +berry.dataset.angle;
+      rx += (tx - rx) * .1; ry += (ty - ry) * .1; ang += .2 * sm;
+      berry.dataset.rx = rx; berry.dataset.ry = ry; berry.dataset.angle = ang;
+      const dur = [5,7,6,8,5.5,6.5,9,11,10][i % 9], ph = (time + i * .7) * (Math.PI * 2 / dur);
+      berry.style.transform = `translate(${rx + +berry.dataset.baseX}px, ${ry + +berry.dataset.baseY + Math.sin(ph) * 15}px) rotate(${ang + Math.cos(ph) * 6}deg)`;
+    });
+  }
+  if (!reduce) document.querySelectorAll('.leaf').forEach((leaf, i) => {
+    const dur = 10 + i * 2, ph = (time + i * 1.2) * (Math.PI * 2 / dur);
+    leaf.style.transform = `translate(${Math.cos(ph * .5) * 15}px, ${Math.sin(ph) * 20}px) rotate(${Math.sin(ph * .3) * 15}deg)`;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// embers rising (were bubbles)
+const embers = document.getElementById('embers');
+function createEmber(){
+  const e = document.createElement('div'); e.className = 'ember';
+  const size = Math.random() * 8 + 3; e.style.width = e.style.height = size + 'px';
+  e.style.left = Math.random() * 100 + '%'; e.style.bottom = '-20px';
+  const d = Math.random() * 6 + 4; e.style.animation = `floatUpImg ${d}s linear forwards`;
+  embers.appendChild(e); setTimeout(() => e.remove(), d * 1000);
+}
+if (!reduce) setInterval(createEmber, 400);
+</script>
+</body>
+</html>
