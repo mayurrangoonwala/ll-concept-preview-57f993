@@ -8,15 +8,13 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Shopify-ready version of the combined built-to-sell page (2026-10-30).
-   Byrna orange + black, Concept 3's LE hero on top, every section labelled
-   Theme (built into a premium Shopify theme), App (Shopify App Store) or
-   Custom (custom Liquid section). Checkout is Shopify's, with Shop Pay.
+   Byrna orange + black. Every section labelled Theme (built into a premium
+   Shopify theme) or App (Shopify App Store); nothing needs custom code. Checkout is Shopify's, with Shop Pay.
    Was: Built to sell, combined (Bobby, 2026-10-29): the best of the concept, the
    Shopify mockup and mockup 1 in one page. Conversion-focused. Byrna-only lineup,
    Less Lethal's own identity (graphite, bone, signal lime; his logo tinted).
@@ -408,11 +406,8 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
 </head>
 <body>
 
-<div class="bar" data-k="theme"><span class="k theme">Theme · announcement bar (+ custom province picker)</span><div class="wrap">
-  <label class="region"><span class="hide-s">Shipping to</span>
-    <select id="prov" aria-label="Your province">
-      <option>Ontario</option><option>British Columbia</option><option>Alberta</option><option>Quebec</option><option>Manitoba</option><option>Saskatchewan</option><option>Nova Scotia</option><option>New Brunswick</option><option>Newfoundland and Labrador</option><option>PEI</option>
-    </select></label>
+<div class="bar" data-k="theme"><span class="k theme">Theme · announcement bar</span><div class="wrap">
+  <span>Ships across Canada</span>
   <span id="ship">Ships in 24–48 h<span class="hide-s"> · Same-day pickup in Vaughan</span></span>
 </div></div>
 
@@ -425,48 +420,27 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   <div class="hdr-r"><a class="btn btn-s" href="#shop">Shop launchers</a><a class="cart" href="#" aria-label="Cart, 1 item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><i>1</i></a></div>
 </div></header>
 
-<section class="lh" id="lehero" data-k="custom"><span class="k custom">Custom · LE hero section (Liquid + GSAP)</span>
-  <div class="lh-embers" id="lhEmbers" aria-hidden="true"></div>
-  <div class="lh-far" aria-hidden="true">
-    <div class="lh-o" data-a="co2" style="top:10%;left:15%;width:60px;height:60px"></div>
-    <div class="lh-o" data-a="ball" style="top:40%;left:82%;width:120px;height:120px;opacity:.35"></div>
-    <div class="lh-o" data-a="co2" style="top:70%;left:75%;width:80px;height:80px"></div>
-    <div class="lh-o" data-a="ball" style="top:84%;left:20%;width:110px;height:110px;opacity:.3"></div>
+<section class="hero" data-k="theme"><span class="k theme">Theme · featured product (+ Shop Pay)</span><div class="wrap">
+  <div>
+    <div class="eyebrow">Byrna launchers · Canadian stock</div>
+    <h1>Protect your home <em>from 60 feet.</em></h1>
+    <p class="lede">Byrna launchers stop a threat before anyone gets close. In stock in Ontario, priced in Canadian dollars, ready to try in our Vaughan showroom.</p>
+    <ul class="checks">
+      <li>No PAL or licence needed: outside the Firearms Act</li>
+      <li>Ships across Canada in 24–48 hours</li>
+      <li>Hold one first: same-day pickup in Vaughan</li>
+    </ul>
+    <div class="ctas"><a class="btn btn-s" href="#shop">Shop launchers</a><a class="btn btn-g" href="#finder">Which one is right for me?</a></div>
   </div>
-  <div class="lh-bgb" aria-hidden="true">
-    <div class="lh-o lb" style="top:15%;left:40%;width:44px;height:44px;opacity:.7"></div>
-    <div class="lh-o lb" style="top:50%;left:55%;width:40px;height:40px;opacity:.6"></div>
-    <div class="lh-o lb" style="top:80%;left:35%;width:42px;height:42px;opacity:.7"></div>
+  <div class="buy" id="buybox">
+    <div class="ph"><span class="tag">Best seller</span><img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/CLXLBlackRightSideView_2000x.webp-2.jpg?v=1787705659&width=1000" alt="Byrna CL-XL launcher" fetchpriority="high"></div>
+    <div class="buy-top"><h3>Byrna CL-XL</h3><span class="price">$830.99</span></div>
+    <div class="spec">.61 CAL · 12 G CO2 · 410 FT/S · 7 + 5 RD MAGS · 60 FT</div>
+    <div class="opts"><button class="on"><i style="background:#111;border:1px solid #444"></i>Black</button><button><i style="background:#FF5A00"></i>Orange</button></div>
+    <div class="row"><a class="btn btn-s" href="#">Add to cart</a><a class="btn btn-shoppay" href="#">Buy with <em>Shop Pay</em></a></div>
+    <div class="fulfil"><span class="dot"></span><span id="ful">In stock · Pick up today in Vaughan, or ships in 24–48 h</span></div>
   </div>
-  <div class="lh-center"><div class="lh-stage"><img id="lhProd" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_left_front_transparent_2000x_2f6252e2-2260-4a37-9854-06207d69ee82.png?v=1787704684&width=1200" alt="Byrna LE launcher in orange" fetchpriority="high"></div></div>
-  <div class="lh-fgb" aria-hidden="true">
-    <div class="lh-o lb" style="top:20%;left:30%;width:78px;height:78px"></div>
-    <div class="lh-o lb" style="top:62%;left:42%;width:56px;height:56px"></div>
-    <div class="lh-o lb" style="top:24%;left:64%;width:84px;height:84px"></div>
-    <div class="lh-o lb" style="top:12%;left:50%;width:62px;height:62px"></div>
-    <div class="lh-o lb" style="top:78%;left:26%;width:56px;height:56px"></div>
-    <div class="lh-o lb" style="top:58%;left:68%;width:70px;height:70px"></div>
-  </div>
-  <div class="lh-grid wrap">
-    <div class="lh-left">
-      <h1><span class="ol">Stop the</span><br>Threat</h1>
-      <p class="lede">The Byrna LE stops a threat from up to 60 feet. No PAL, no permits, nothing to fumble. In stock in Ontario, priced in CAD.</p>
-      <div class="stock"><span class="dot"></span><span id="lhStock">LE · Orange · $739.99 · in stock, pick up today in Vaughan</span></div>
-      <div class="ctas"><a class="btn btn-s" href="#">Add to cart</a><a class="btn btn-shoppay" href="#">Buy with <em>Shop Pay</em></a></div>
-      <div class="rating"><i>4.3</i><span><small>GOOGLE · 26 REVIEWS</small><b>Vaughan showroom</b></span></div>
-    </div>
-    <div class="lh-right">
-      <div style="display:flex;flex-direction:column;gap:16px;align-items:inherit">
-        <div class="lh-cards">
-          <button class="lh-card on" data-v="orange"><img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_Right_transparent_2000x_0d37bddf-691d-4503-8710-41d97c5cd223.png?v=1787704684&width=400" alt=""><span>LE · Orange</span><span>$739.99</span></button>
-          <button class="lh-card" data-v="stealth"><img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Black_-_Right_transparent_2000x_04b61ba3-a0ac-4255-b751-76a9f4b42d11.png?v=1787704684&width=400" alt="" style="filter:brightness(1.25)"><span>LE · Black</span><span>$739.99</span></button>
-        </div>
-        <div class="lh-arrows"><button data-d="-1" aria-label="Previous colour">←</button><button data-d="1" aria-label="Next colour">→</button></div>
-      </div>
-      <div class="side"><span class="ol">Not a</span><br>Life</div>
-    </div>
-  </div>
-</section>
+</div></section>
 
 <section class="proof" data-k="theme"><span class="k theme">Theme · multicolumn</span><div class="wrap">
   <div><b>60 FT</b><span>Stop a threat before it reaches you</span></div>
@@ -496,7 +470,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   </div>
 </div></section>
 
-<section class="sec light" id="compare" style="padding-top:0" data-k="custom"><span class="k custom">Custom · specs table (metafields)</span><div class="wrap">
+<section class="sec light" id="compare" style="padding-top:0" data-k="theme"><span class="k theme">Theme · page content (table in Shopify editor)</span><div class="wrap">
   <div class="sec-h"><div><div class="eyebrow">Compare</div><h2>Side by side</h2></div><p>Every launcher we sell. Figures from Byrna.</p></div>
   <div class="tbl" role="region" aria-label="Launcher comparison" tabindex="0"><table>
     <thead><tr><th></th><th>SD</th><th>LE</th><th>CL-XL</th><th>TCR</th><th>Mission 4</th></tr></thead>
@@ -597,7 +571,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
 </div></footer>
 
 <div class="sticky" id="sticky" data-k="theme"><span class="k theme">Theme · sticky add to cart</span><div class="wrap">
-  <div class="it"><img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_Right_transparent_2000x_0d37bddf-691d-4503-8710-41d97c5cd223.png?v=1787704684&width=400" alt="" id="stkImg"><div><b>Byrna LE</b><span id="stkVar">Orange · $739.99</span></div></div>
+  <div class="it"><img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/CLXLBlackRightSideView_2000x.webp-2.jpg?v=1787705659&width=200" alt=""><div><b>Byrna CL-XL</b><span>$830.99</span></div></div>
   <div style="display:flex;gap:8px"><a class="btn btn-s" href="#">Add to cart</a><a class="btn btn-shoppay hide-xs" href="#">Shop Pay</a></div>
 </div></div>
 
@@ -610,14 +584,13 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   <button class="x" id="nx" aria-label="Close">×</button>
   <div class="eyebrow">Shopify build notes</div>
   <h3>What runs this page</h3>
-  <p>Everything stays on his Shopify store: products, stock, orders, shipping, checkout and Shop Pay. The new look is a premium theme with custom sections, plus a few apps.</p>
+  <p>Everything stays on his Shopify store: products, stock, orders, shipping, checkout and Shop Pay. The new look is a premium theme we buy and set up, plus a few apps. Nothing on this page needs custom code.</p>
   <h4>Sections</h4>
   <ul>
-    <li><span class="k custom">Custom</span><span><b>LE hero.</b> Custom Liquid section with GSAP. The two cards are the LE's colour variants; Add to cart and Shop Pay use the selected one.</span></li>
+    <li><span class="k theme">Theme</span><span><b>Hero.</b> The theme's featured-product section: photo, colour options, Add to cart and Shop Pay.</span></li>
     <li><span class="k theme">Theme</span><span><b>Announcement bar, header, mega menu, footer.</b> Built into premium themes.</span></li>
-    <li><span class="k custom">Custom</span><span><b>Province picker.</b> Small custom script; Shopify Markets can do part of it.</span></li>
     <li><span class="k theme">Theme</span><span><b>Proof strip, shop by need, lineup, FAQ, newsletter, quote form.</b> Standard theme sections (multicolumn, collection list, featured collection, collapsible content, email sign-up, contact form).</span></li>
-    <li><span class="k custom">Custom</span><span><b>Comparison table.</b> Custom section reading product specs from metafields, so it updates with the catalogue.</span></li>
+    <li><span class="k theme">Theme</span><span><b>Comparison table.</b> A table typed into Shopify's page editor, shown by the theme.</span></li>
     <li><span class="k theme">Theme</span><span><b>Sticky buy bar.</b> Included in many premium themes; otherwise an app.</span></li>
   </ul>
   <h4>Apps needed</h4>
@@ -634,7 +607,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
     <li><span class="k theme">Shopify</span><span><b>Checkout, Shop Pay, Apple Pay and Google Pay, shipping rates, in-store pickup, Shopify Email.</b> Already on his store; nothing to rebuild.</span></li>
   </ul>
   <h4>Still to price</h4>
-  <p>Premium theme (one-time), each app (most monthly), and the custom sections. Confirm current prices before quoting.</p>
+  <p>Premium theme (one-time), each app (most monthly), and our set-up and styling. Confirm current prices before quoting.</p>
 </aside>
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t" hidden><div class="gate-card" data-k="app"><span class="k app">App · age verification</span>
@@ -665,71 +638,15 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   document.getElementById('nx').onclick=function(){ setN(false); };
   if(q.get('labels')==='1') setK(true); if(q.get('notes')==='1') setN(true);
 
-  // LE hero (Concept 3 as a section)
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, lh=document.getElementById('lehero'), prod=document.getElementById('lhProd');
-  var ART={
-    ball:function(id){ return '<svg viewBox="0 0 100 100"><defs><radialGradient id="'+id+'" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#FFC9A3"/><stop offset=".35" stop-color="#FF6A14"/><stop offset="1" stop-color="#6E2300"/></radialGradient></defs><circle cx="50" cy="50" r="44" fill="url(#'+id+')"/><path d="M14 52 Q50 66 86 52" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3"/><ellipse cx="36" cy="30" rx="12" ry="7" fill="rgba(255,255,255,.45)" transform="rotate(-25 36 30)"/></svg>'; },
-    co2:function(id){ return '<svg viewBox="0 0 100 100"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2F3F5"/><stop offset=".45" stop-color="#9AA0A6"/><stop offset="1" stop-color="#3B3F44"/></linearGradient></defs><g transform="rotate(-30 50 50)"><rect x="14" y="38" width="64" height="24" rx="12" fill="url(#'+id+')"/><path d="M78 44 L90 47 V53 L78 56 Z" fill="#7C8288"/><rect x="40" y="38" width="3" height="24" fill="rgba(255,90,0,.85)"/><rect x="22" y="42" width="40" height="4" rx="2" fill="rgba(255,255,255,.55)"/></g></svg>'; }
-  };
-  var gid=0; function draw(el,k){ el.innerHTML=ART[k]('lg'+(gid++)); }
-  var objs=[].slice.call(lh.querySelectorAll('.lb'));
-  objs.forEach(function(o){ draw(o,'ball'); o.dataset.rx=0; o.dataset.ry=0; o.dataset.a=Math.random()*360; o.dataset.bx=0; o.dataset.by=0; });
-  lh.querySelectorAll('.lh-far .lh-o').forEach(function(o){ draw(o,o.dataset.a); });
-  var SRC={orange:'https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_left_front_transparent_2000x_2f6252e2-2260-4a37-9854-06207d69ee82.png?v=1787704684&width=1200',stealth:'https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Black_-_left_front_transparent_2000x_0779bfef-6094-4d1d-95e6-bf193a152f4d.png?v=1787704684&width=1200'}, IMG={orange:'https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_Right_transparent_2000x_0d37bddf-691d-4503-8710-41d97c5cd223.png?v=1787704684&width=400',stealth:'https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Black_-_Right_transparent_2000x_04b61ba3-a0ac-4255-b751-76a9f4b42d11.png?v=1787704684&width=400'};
-  new Image().src=SRC.stealth;
-  var cur='orange', busy=false, spinV=0, m={x:0,y:0,px:-9999,py:-9999}, c={x:0,y:0};
-  var cards=[].slice.call(lh.querySelectorAll('.lh-card'));
-  cards.forEach(function(cd){ cd.onclick=function(){ if(busy||cd.dataset.v===cur) return; cards.forEach(function(x){x.classList.remove('on')}); cd.classList.add('on'); swap(cd.dataset.v); }; });
-  lh.querySelectorAll('.lh-arrows button').forEach(function(b){ b.onclick=function(){ var n=cards.find(function(x){return x.dataset.v!==cur}); if(n) n.click(); }; });
-  function swap(v){
-    busy=true; cur=v; var black=v==='stealth', nm=black?'Black':'Orange';
-    document.getElementById('lhStock').textContent='LE · '+nm+' · $739.99 · in stock, pick up today in Vaughan';
-    document.getElementById('stkVar').textContent=nm+' · $739.99'; document.getElementById('stkImg').src=SRC[v];
-    if(reduce || !window.gsap){ lh.classList.toggle('stealth',black); prod.src=SRC[v]; objs.forEach(function(o){draw(o,black?'co2':'ball')}); busy=false; return; }
-    var sp={v:0,b:0};
-    gsap.to(sp,{v:360,b:15,duration:.6,ease:'power2.in',onUpdate:function(){spinV=sp.v; prod.style.filter='blur('+sp.b+'px) drop-shadow(0 40px 50px rgba(0,0,0,.6))';},
-      onComplete:function(){ lh.classList.toggle('stealth',black); prod.src=SRC[v]; prod.alt='Byrna LE launcher in '+nm.toLowerCase();
-        gsap.to(sp,{v:720,b:0,duration:1.5,ease:'back.out(0.7)',onUpdate:function(){spinV=sp.v; prod.style.filter='blur('+sp.b+'px) drop-shadow(0 40px 50px rgba(0,0,0,.6))';},onComplete:function(){spinV=0; prod.style.filter='';}}); }});
-    var r=lh.getBoundingClientRect(), done=0;
-    objs.forEach(function(o){
-      var w=o.offsetWidth/2, h=o.offsetHeight/2, pr=o.parentNode.getBoundingClientRect();
-      var cx=r.width/2-(o.offsetLeft+w), cy=r.height/2-(o.offsetTop+h), a0=+o.dataset.a, nx=(Math.random()-.5)*200, ny=(Math.random()-.5)*200;
-      gsap.set(o,{rotation:a0,x:+o.dataset.bx,y:+o.dataset.by});
-      gsap.timeline().to(o,{x:cx,y:cy,rotation:a0+45,scale:.1,opacity:0,duration:.5,ease:'power2.in',onComplete:function(){draw(o,black?'co2':'ball');}})
-        .to(o,{duration:.3})
-        .to(o,{x:nx,y:ny,rotation:a0+90,scale:1,opacity:1,duration:.9,ease:'back.out(1.5)',onComplete:function(){
-          o.dataset.a=a0+90; o.dataset.bx=nx; o.dataset.by=ny; o.dataset.rx=0; o.dataset.ry=0; var op=o.style.opacity; gsap.set(o,{clearProps:'transform,scale,rotation,x,y'}); if(++done===objs.length) busy=false; }});
-    });
-  }
-  addEventListener('mousemove',function(e){ m.x=e.clientX/innerWidth-.5; m.y=e.clientY/innerHeight-.5; m.px=e.clientX; m.py=e.clientY; });
-  var fg=lh.querySelector('.lh-fgb'), bg=lh.querySelector('.lh-bgb'), far=lh.querySelector('.lh-far');
-  (function tick(){
-    var t=Date.now()*.001; c.x+=(m.x-c.x)*.05; c.y+=(m.y-c.y)*.05;
-    prod.style.transform='rotateY('+(c.x*40+spinV)+'deg) rotateX('+(-c.y*20)+'deg)';
-    if(!reduce){
-      fg.style.transform='translate('+c.x*60+'px,'+c.y*60+'px)'; bg.style.transform='translate('+c.x*-30+'px,'+c.y*-30+'px)'; far.style.transform='translate('+c.x*-15+'px,'+c.y*-15+'px)';
-      if(!busy) objs.forEach(function(o,i){
-        var b=o.getBoundingClientRect(), dx=m.px-(b.left+b.width/2), dy=m.py-(b.top+b.height/2), d=Math.sqrt(dx*dx+dy*dy)||1, tx=0, ty=0, k=1;
-        if(d<400){ var f=(400-d)/400; tx=dx/d*f*-80; ty=dy/d*f*-80; k=1+f*5; }
-        var rx=+o.dataset.rx+(tx-o.dataset.rx)*.1, ry=+o.dataset.ry+(ty-o.dataset.ry)*.1, a=+o.dataset.a+.2*k;
-        o.dataset.rx=rx; o.dataset.ry=ry; o.dataset.a=a;
-        var du=[5,7,6,8,5.5,6.5,9,11,10][i%9], ph=(t+i*.7)*(Math.PI*2/du);
-        o.style.transform='translate('+(rx+ +o.dataset.bx)+'px,'+(ry+ +o.dataset.by+Math.sin(ph)*15)+'px) rotate('+(a+Math.cos(ph)*6)+'deg)';
-      });
-    }
-    requestAnimationFrame(tick);
-  })();
-  var em=document.getElementById('lhEmbers');
-  if(!reduce) setInterval(function(){ if(lh.getBoundingClientRect().bottom<0) return; var e=document.createElement('div'); e.className='lh-ember'; var z=Math.random()*8+3; e.style.width=e.style.height=z+'px'; e.style.left=Math.random()*100+'%'; e.style.bottom='-20px'; var du=Math.random()*6+4; e.style.animation='lhUp '+du+'s linear forwards'; em.appendChild(e); setTimeout(function(){e.remove()},du*1000); },400);
 
   var prov=document.getElementById('prov'), ship=document.getElementById('ship'), ful=document.getElementById('ful');
-  prov.onchange=function(){
+  if(prov) prov.onchange=function(){
     var on=prov.value==='Ontario';
     ship.innerHTML=on?'Ships in 24–48 h<span class="hide-s"> · Same-day pickup in Vaughan</span>':'Ships to '+prov.value+' in 24–48 h';
     if(ful) ful.textContent=on?'In stock · Pick up today in Vaughan, or ships in 24–48 h':'In stock · Ships to '+prov.value+' in 24–48 h';
   };
   document.querySelectorAll('.chips,.opts,.slots').forEach(function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');});});
-  var box=document.getElementById('lehero'), st=document.getElementById('sticky');
+  var box=document.getElementById('buybox'), st=document.getElementById('sticky');
   if('IntersectionObserver' in window) new IntersectionObserver(function(e){st.classList.toggle('on',!e[0].isIntersecting && e[0].boundingClientRect.top<0)}).observe(box);
 })();
 </script>
