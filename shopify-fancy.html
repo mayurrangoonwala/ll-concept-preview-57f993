@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Less Lethal · Compass-built</title>
+<title>Less Lethal · Shopify, the showpiece</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -13,9 +13,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Compass-built version (option 2), 2026-10-30: the combined built-to-sell page
-   with Concept 3's LE hero, everything built in, checkout by our payment provider.
-   Derived from the earlier Shopify-ready draft.
+/* Shopify-ready version of the combined built-to-sell page (2026-10-30).
+   Byrna orange + black, Concept 3's LE hero on top, every section labelled
+   Theme (built into a premium Shopify theme), App (Shopify App Store) or
+   Custom (custom Liquid section). Checkout is Shopify's, with Shop Pay.
    Was: Built to sell, combined (Bobby, 2026-10-29): the best of the concept, the
    Shopify mockup and mockup 1 in one page. Conversion-focused. Byrna-only lineup,
    Less Lethal's own identity (graphite, bone, signal lime; his logo tinted).
@@ -407,7 +408,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
 </head>
 <body>
 
-<div class="bar"><div class="wrap">
+<div class="bar" data-k="theme"><span class="k theme">Theme · announcement bar (+ custom province picker)</span><div class="wrap">
   <label class="region"><span class="hide-s">Shipping to</span>
     <select id="prov" aria-label="Your province">
       <option>Ontario</option><option>British Columbia</option><option>Alberta</option><option>Quebec</option><option>Manitoba</option><option>Saskatchewan</option><option>Nova Scotia</option><option>New Brunswick</option><option>Newfoundland and Labrador</option><option>PEI</option>
@@ -415,7 +416,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   <span id="ship">Ships in 24–48 h<span class="hide-s"> · Same-day pickup in Vaughan</span></span>
 </div></div>
 
-<header><div class="wrap hdr">
+<header data-k="theme"><span class="k theme">Theme · header + mega menu</span><div class="wrap hdr">
   <a class="logo" href="#"><span class="mark" aria-hidden="true"></span><span><b>LESS LETHAL</b><small>LIMITED</small></span></a>
   <nav class="nav" aria-label="Main"><div class="has-mega"><a href="#shop">Launchers ▾</a><div class="mega"><div class="mega-in">
     <div><h4>Handheld</h4><ul><li>CL-XL</li><li>LE kit</li><li>SD kit</li></ul></div>
@@ -424,7 +425,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   <div class="hdr-r"><a class="btn btn-s" href="#shop">Shop launchers</a><a class="cart" href="#" aria-label="Cart, 1 item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><i>1</i></a></div>
 </div></header>
 
-<section class="lh" id="lehero">
+<section class="lh" id="lehero" data-k="custom"><span class="k custom">Custom · LE hero section (Liquid + GSAP)</span>
   <div class="lh-embers" id="lhEmbers" aria-hidden="true"></div>
   <div class="lh-far" aria-hidden="true">
     <div class="lh-o" data-a="co2" style="top:10%;left:15%;width:60px;height:60px"></div>
@@ -451,7 +452,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
       <h1><span class="ol">Stop the</span><br>Threat</h1>
       <p class="lede">The Byrna LE stops a threat from up to 60 feet. No PAL, no permits, nothing to fumble. In stock in Ontario, priced in CAD.</p>
       <div class="stock"><span class="dot"></span><span id="lhStock">LE · Orange · $739.99 · in stock, pick up today in Vaughan</span></div>
-      <div class="ctas"><a class="btn btn-s" href="#">Add to cart</a><a class="btn btn-g" href="#">Buy now</a></div>
+      <div class="ctas"><a class="btn btn-s" href="#">Add to cart</a><a class="btn btn-shoppay" href="#">Buy with <em>Shop Pay</em></a></div>
       <div class="rating"><i>4.3</i><span><small>GOOGLE · 26 REVIEWS</small><b>Vaughan showroom</b></span></div>
     </div>
     <div class="lh-right">
@@ -467,14 +468,14 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   </div>
 </section>
 
-<section class="proof"><div class="wrap">
+<section class="proof" data-k="theme"><span class="k theme">Theme · multicolumn</span><div class="wrap">
   <div><b>60 FT</b><span>Stop a threat before it reaches you</span></div>
   <div><b>1 PULL</b><span>Loaded means ready. No steps to remember</span></div>
   <div><b>0 PERMITS</b><span>No PAL, no background check</span></div>
   <div><b>4.3★</b><span>26 Google reviews of our showroom</span></div>
 </div></section>
 
-<section class="sec" id="needs" style="padding-bottom:0"><div class="wrap">
+<section class="sec" id="needs" style="padding-bottom:0" data-k="theme"><span class="k theme">Theme · collection list</span><div class="wrap">
   <div class="sec-h"><div><div class="eyebrow">Shop by need</div><h2>What are you protecting?</h2></div><p>Start with the situation, not the spec sheet. Each path shows the right launcher and the kit that goes with it.</p></div>
   <div class="needs">
     <a class="need" href="#shop"><span class="n">01</span><h3>Home</h3><p>Bedside-ready launchers with the stopping power to end a break-in.</p><span class="go">Shop home →</span></a>
@@ -484,7 +485,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   </div>
 </div></section>
 
-<section class="sec light" id="shop"><div class="wrap">
+<section class="sec light" id="shop" data-k="theme"><span class="k theme">Theme · featured collection</span><div class="wrap">
   <div class="sec-h"><div><div class="eyebrow">The Byrna lineup</div><h2>Pick your launcher</h2></div><p>Every launcher in stock in Ontario, with the kit you need to start. Prices in CAD.</p></div>
   <div class="grid">
     <div class="card"><div class="ph"><span class="tag">Best seller</span><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/CLXLBlackRightSideView_2000x.webp-2.jpg?v=1787705659&width=600" alt="Byrna CL-XL"></div><div class="bd"><h3>CL-XL</h3><div class="use">Home and carry · biggest magazine</div><div class="sp">.61 · 12 G · 410 FT/S</div><div class="pr">$830.99</div><a class="btn btn-d" href="#">Buy now</a></div></div>
@@ -495,7 +496,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   </div>
 </div></section>
 
-<section class="sec light" id="compare" style="padding-top:0"><div class="wrap">
+<section class="sec light" id="compare" style="padding-top:0" data-k="custom"><span class="k custom">Custom · specs table (metafields)</span><div class="wrap">
   <div class="sec-h"><div><div class="eyebrow">Compare</div><h2>Side by side</h2></div><p>Every launcher we sell. Figures from Byrna.</p></div>
   <div class="tbl" role="region" aria-label="Launcher comparison" tabindex="0"><table>
     <thead><tr><th></th><th>SD</th><th>LE</th><th>CL-XL</th><th>TCR</th><th>Mission 4</th></tr></thead>
@@ -510,7 +511,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
     </tbody></table></div>
 </div></section>
 
-<section class="sec" id="finder"><div class="wrap finder">
+<section class="sec" id="finder" data-k="app"><span class="k app">App · product quiz + email capture</span><div class="wrap finder">
   <div class="panel">
     <div class="eyebrow">Launcher finder · 30 seconds</div>
     <h2>Not sure which one?</h2>
@@ -528,7 +529,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   </div>
 </div></section>
 
-<section class="sec light" id="kits"><div class="wrap">
+<section class="sec light" id="kits" data-k="app"><span class="k app">App · bundles</span><div class="wrap">
   <div class="sec-h"><div><div class="eyebrow">Starter kits</div><h2>Everything to start, in one click</h2></div><p>Launcher, projectiles and CO2 together, so nothing is missing on day one.</p></div>
   <div class="kits">
     <div class="kit"><h3>SD starter</h3><ul><li>Byrna SD kit</li><li>Kinetic projectiles (.68)</li><li>8 g CO2 cartridges</li></ul><div class="pr">$759.97<small>3 items</small></div><a class="btn btn-d" href="#">Add kit to cart</a></div>
@@ -538,7 +539,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   <p class="note">Kit prices are today's item prices added up. Any kit discount is your call.</p>
 </div></section>
 
-<section class="sec light" id="reviews" style="padding-top:0"><div class="wrap">
+<section class="sec light" id="reviews" style="padding-top:0" data-k="app"><span class="k app">App · reviews + Google rating</span><div class="wrap">
   <div class="sec-h"><div><div class="eyebrow">Reviews</div><h2>What customers say</h2></div></div>
   <div class="revs">
     <div class="score"><span class="st">★★★★☆</span><b>4.3</b><p>From 26 Google reviews of our Vaughan showroom</p></div>
@@ -550,7 +551,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   </div>
 </div></section>
 
-<section class="sec" id="showroom"><div class="wrap two">
+<section class="sec" id="showroom" data-k="app"><span class="k app">App · booking  +  Theme · newsletter</span><div class="wrap two">
   <div class="show">
     <div class="eyebrow">Vaughan showroom</div>
     <h2>Hold it before you buy it</h2>
@@ -567,7 +568,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   </div>
 </div></section>
 
-<section class="sec" id="faq" style="padding-top:0"><div class="wrap legal">
+<section class="sec" id="faq" style="padding-top:0" data-k="theme"><span class="k theme">Theme · collapsible content</span><div class="wrap legal">
   <div><div class="eyebrow">Is it legal?</div><h2>Straight answers, before you buy</h2><p style="color:var(--fg2)">The question everyone asks first, in plain language.</p><p class="src">Based on Criminal Code s.84(3)(d).</p></div>
   <div>
     <details open><summary>Do I need a PAL or licence?</summary><p>No. A launcher that can't fire faster than 152.4 m/s or with more than 5.7 joules isn't a "firearm" under the Firearms Act. Byrna launchers sit under that line, so no PAL, permit or background check. You must be 18 or older to buy.</p></details>
@@ -579,30 +580,64 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   </div>
 </div></section>
 
-<section class="sec" id="pro" style="padding-top:0"><div class="wrap"><div class="pro">
+<section class="sec" id="pro" style="padding-top:0" data-k="theme"><span class="k theme">Theme · contact form</span><div class="wrap"><div class="pro">
   <div><div class="eyebrow">Security, LE &amp; business</div><h2>Equipping a team?</h2><p>Volume pricing, duty launchers and training ammo for security companies, police services and businesses.</p><a class="btn btn-s" href="#">Request a quote</a></div>
   <ul><li>Volume and contract pricing</li><li>Fast quotes from a real person</li><li>Training and demo days in Vaughan</li></ul>
 </div></div></section>
 
-<footer><div class="wrap">
+<footer data-k="theme"><span class="k theme">Theme · footer</span><div class="wrap">
   <div class="fg">
     <div><a class="logo" href="#"><span class="mark" aria-hidden="true"></span><span><b>LESS LETHAL</b><small>LIMITED</small></span></a><p style="margin-top:14px;max-width:300px">Byrna less-lethal launchers, in stock in Ontario. info@lesslethal.ca · @lesslethalcanada</p></div>
     <div><h4>Shop</h4><ul><li>Launchers</li><li>Starter kits</li><li>Ammo &amp; CO2</li><li>Accessories</li></ul></div>
     <div><h4>Help</h4><ul><li>Is it legal?</li><li>Shipping</li><li>Final sale &amp; damage</li><li>FAQ</li></ul></div>
     <div><h4>Visit</h4><ul><li>Showroom</li><li>Book a demo</li><li>Business quotes</li></ul></div>
   </div>
-  <div class="pay"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>APPLE PAY</span><span>GOOGLE PAY</span></div>
-  <p style="margin-top:10px">Secure checkout.</p><p style="margin-top:8px">© 2026 Less Lethal Limited · Privacy · Terms · Shipping · Refunds</p>
+  <div class="pay"><span>SHOP PAY</span><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>APPLE PAY</span><span>GOOGLE PAY</span></div>
+  <p style="margin-top:10px">Secure checkout by Shopify.</p><p style="margin-top:8px">© 2026 Less Lethal Limited · Privacy · Terms · Shipping · Refunds</p>
 </div></footer>
 
-<div class="sticky" id="sticky"><div class="wrap">
+<div class="sticky" id="sticky" data-k="theme"><span class="k theme">Theme · sticky add to cart</span><div class="wrap">
   <div class="it"><img src="https://cdn.shopify.com/s/files/1/0567/5679/7539/files/Byrna_LE_Orange_-_Right_transparent_2000x_0d37bddf-691d-4503-8710-41d97c5cd223.png?v=1787704684&width=400" alt="" id="stkImg"><div><b>Byrna LE</b><span id="stkVar">Orange · $739.99</span></div></div>
-  <div style="display:flex;gap:8px"><a class="btn btn-s" href="#">Add to cart</a><a class="btn btn-g hide-xs" href="#">Buy now</a></div>
+  <div style="display:flex;gap:8px"><a class="btn btn-s" href="#">Add to cart</a><a class="btn btn-shoppay hide-xs" href="#">Shop Pay</a></div>
 </div></div>
 
+<div class="mk" role="group" aria-label="Mockup controls">
+  <button id="kbtn" aria-pressed="false">Show theme / app / custom</button>
+  <button id="nbtn" aria-pressed="false">Build notes</button>
+</div>
 
+<aside class="notes" id="notes" aria-label="Build notes" aria-hidden="true">
+  <button class="x" id="nx" aria-label="Close">×</button>
+  <div class="eyebrow">Shopify build notes</div>
+  <h3>What runs this page</h3>
+  <p>Everything stays on his Shopify store: products, stock, orders, shipping, checkout and Shop Pay. The showpiece version: the same premium theme as the conversion version, plus custom sections we build for your store (the animated launcher hero, the comparison table, the province picker) and a few apps.</p>
+  <h4>Sections</h4>
+  <ul>
+    <li><span class="k custom">Custom</span><span><b>LE hero.</b> Custom Liquid section with GSAP. The two cards are the LE's colour variants; Add to cart and Shop Pay use the selected one.</span></li>
+    <li><span class="k theme">Theme</span><span><b>Announcement bar, header, mega menu, footer.</b> Built into premium themes.</span></li>
+    <li><span class="k custom">Custom</span><span><b>Province picker.</b> Small custom script; Shopify Markets can do part of it.</span></li>
+    <li><span class="k theme">Theme</span><span><b>Proof strip, shop by need, lineup, FAQ, newsletter, quote form.</b> Standard theme sections (multicolumn, collection list, featured collection, collapsible content, email sign-up, contact form).</span></li>
+    <li><span class="k custom">Custom</span><span><b>Comparison table.</b> Custom section reading product specs from metafields, so it updates with the catalogue.</span></li>
+    <li><span class="k theme">Theme</span><span><b>Sticky buy bar.</b> Included in many premium themes; otherwise an app.</span></li>
+  </ul>
+  <h4>Apps needed</h4>
+  <ul>
+    <li><span class="k app">App</span><span><b>Age verification</b> for the 18+ check.</span></li>
+    <li><span class="k app">App</span><span><b>Product quiz</b> for the launcher finder, with email capture.</span></li>
+    <li><span class="k app">App</span><span><b>Bundles</b> for the starter kits (Shopify's own Bundles app or similar).</span></li>
+    <li><span class="k app">App</span><span><b>Reviews</b>: post-purchase review requests, stars on products, and his Google rating.</span></li>
+    <li><span class="k app">App</span><span><b>Appointment booking</b> for showroom demos.</span></li>
+    <li><span class="k app">App</span><span><b>Back-in-stock alerts</b> for sold-out items.</span></li>
+  </ul>
+  <h4>Shopify itself</h4>
+  <ul>
+    <li><span class="k theme">Shopify</span><span><b>Checkout, Shop Pay, Apple Pay and Google Pay, shipping rates, in-store pickup, Shopify Email.</b> Already on his store; nothing to rebuild.</span></li>
+  </ul>
+  <h4>Still to price</h4>
+  <p>Premium theme (one-time), each app (most monthly), and the custom sections. Confirm current prices before quoting.</p>
+</aside>
 
-<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t" hidden><div class="gate-card">
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t" hidden><div class="gate-card" data-k="app"><span class="k app">App · age verification</span>
   <span class="mark" aria-hidden="true"></span>
   <h2 id="gate-t">Are you 18 or older?</h2>
   <p>Less Lethal sells less-lethal launchers. You must be 18 or older to enter.</p>
@@ -621,6 +656,14 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   if(q.get('gate')==='1' || (!ok && q.get('gate')!=='0')) gate.hidden=false;
   document.getElementById('gate-yes').onclick=function(){ gate.hidden=true; try{ sessionStorage.setItem('ll-18','1'); }catch(e){} };
 
+  // mockup controls
+  var kb=document.getElementById('kbtn'), nb=document.getElementById('nbtn'), notes=document.getElementById('notes');
+  function setK(on){ document.body.classList.toggle('show-k',on); kb.setAttribute('aria-pressed',on); }
+  function setN(on){ notes.classList.toggle('on',on); notes.setAttribute('aria-hidden',!on); nb.setAttribute('aria-pressed',on); }
+  kb.onclick=function(){ setK(kb.getAttribute('aria-pressed')!=='true'); };
+  nb.onclick=function(){ setN(nb.getAttribute('aria-pressed')!=='true'); };
+  document.getElementById('nx').onclick=function(){ setN(false); };
+  if(q.get('labels')==='1') setK(true); if(q.get('notes')==='1') setN(true);
 
   // LE hero (Concept 3 as a section)
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, lh=document.getElementById('lehero'), prod=document.getElementById('lhProd');
