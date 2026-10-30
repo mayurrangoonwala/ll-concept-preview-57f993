@@ -292,7 +292,9 @@ body.show-k [data-k="custom"]{outline-color:#7C5CFF}
 header .k{top:auto;bottom:-11px;left:24px;right:auto}
 
 /* bottom control: labels + build notes */
-.mk{position:fixed;left:16px;bottom:16px;z-index:70;display:flex;gap:6px;background:rgba(11,11,12,.92);border:1px solid var(--line);border-radius:999px;padding:6px;backdrop-filter:blur(10px)}
+.mk{display:none}
+body.mk-on .mk{display:flex}
+.mk{position:fixed;left:16px;bottom:16px;z-index:70;gap:6px;background:rgba(11,11,12,.92);border:1px solid var(--line);border-radius:999px;padding:6px;backdrop-filter:blur(10px)}
 .mk button{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-radius:999px;color:var(--fg2)}
 .mk button[aria-pressed="true"]{background:var(--signal);color:var(--signal-ink)}
 .sticky.on ~ .mk{bottom:88px}
@@ -633,8 +635,8 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   <ul>
     <li><span class="k theme">Shopify</span><span><b>Checkout, Shop Pay, Apple Pay and Google Pay, shipping rates, in-store pickup, Shopify Email.</b> Already on his store; nothing to rebuild.</span></li>
   </ul>
-  <h4>Still to price</h4>
-  <p>Premium theme (one-time), each app (most monthly), and the custom sections. Confirm current prices before quoting.</p>
+  <h4>Pricing</h4>
+  <p>Scope and pricing come in writing after our call.</p>
 </aside>
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t" hidden><div class="gate-card" data-k="app"><span class="k app">App · age verification</span>
@@ -663,6 +665,7 @@ header .k{top:auto;bottom:-11px;left:24px;right:auto}
   kb.onclick=function(){ setK(kb.getAttribute('aria-pressed')!=='true'); };
   nb.onclick=function(){ setN(nb.getAttribute('aria-pressed')!=='true'); };
   document.getElementById('nx').onclick=function(){ setN(false); };
+  if(q.get('labels')==='1'||q.get('notes')==='1') document.body.classList.add('mk-on');
   if(q.get('labels')==='1') setK(true); if(q.get('notes')==='1') setN(true);
 
   // LE hero (Concept 3 as a section)
